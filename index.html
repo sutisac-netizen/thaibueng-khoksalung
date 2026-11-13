@@ -1,0 +1,1960 @@
+<!DOCTYPE html>
+<html lang="th" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ไทยเบิ้ง บ้านโคกสลุง | พิพิธภัณฑ์พื้นบ้านและคลังข้อมูลดิจิทัลวัฒนธรรม จ.ลพบุรี</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&family=Sarabun:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        prompt: ['Prompt', 'sans-serif'],
+                        sarabun: ['Sarabun', 'sans-serif'],
+                    },
+                    colors: {
+                        navanurakDark: '#1a2936',
+                        navanurakBlue: '#2c4257',
+                        terracotta: '#b85434',
+                        terracottaDark: '#993f23',
+                        ochreGold: '#d99026',
+                        warmLinen: '#faf7f2',
+                        cardLinen: '#f4ede2',
+                        forestGreen: '#23593d',
+                        lightBorder: '#e5dec9'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Sarabun', sans-serif;
+            background-color: #faf7f2;
+            color: #2d3748;
+        }
+        h1, h2, h3, h4, h5, h6, .font-heading {
+            font-family: 'Prompt', sans-serif;
+        }
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(10px);
+        }
+        .img-zoom {
+            transition: transform 0.4s ease;
+        }
+        .img-zoom:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="bg-warmLinen text-slate-800 antialiased selection:bg-terracotta selection:text-white">
+
+    <!-- Top Integrated Banner: Course + Navanurak NECTEC PMUC -->
+    <div class="bg-navanurakDark text-amber-100 text-xs py-2 px-4 border-b border-navanurakBlue/60">
+        <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
+            <div class="flex items-center space-x-2">
+                <span class="bg-ochreGold/20 text-ochreGold px-2 py-0.5 rounded font-medium border border-ochreGold/30">บธ 3012301</span>
+                <span>โครงการต้นแบบ: การออกแบบและบริหารจัดการเว็บไซต์ธุรกิจชุมชน (คอมพิวเตอร์ธุรกิจ คณะวิทยาการจัดการ)</span>
+                <span class="hidden lg:inline text-slate-400">| บูรณาการคลังข้อมูลดิจิทัลวัฒนธรรม นวนุรักษ์ (สวทช. / บพข.)</span>
+            </div>
+            <div class="flex items-center space-x-4 text-[11px]">
+                <div class="flex items-center space-x-1.5 text-slate-300">
+                    <span class="font-semibold text-white">🌐 ภาษา:</span>
+                    <button onclick="changeLang('th')" class="font-bold text-amber-300 hover:underline">🇹🇭 TH</button>
+                    <span>|</span>
+                    <button onclick="changeLang('en')" class="hover:text-amber-200">🇺🇸 EN</button>
+                    <span>|</span>
+                    <button onclick="changeLang('ch')" class="hover:text-amber-200">🇨🇳 CN</button>
+                </div>
+                <span class="hidden md:inline text-slate-600">|</span>
+                <button onclick="toggleAdminModal()" class="text-white hover:text-ochreGold transition flex items-center gap-1 font-medium">
+                    <i class="fa-solid fa-chart-line text-xs"></i> <span>แดชบอร์ดหลังบ้าน (Admin)</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Navigation Bar -->
+    <header class="sticky top-0 z-40 glass-nav shadow-sm border-b border-amber-900/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Brand / Logo -->
+                <a href="#hero" class="flex items-center space-x-3 group">
+                    <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-terracotta to-ochreGold flex items-center justify-center text-white shadow-md shadow-terracotta/20 group-hover:scale-105 transition transform">
+                        <i class="fa-solid fa-landmark text-xl"></i>
+                    </div>
+                    <div>
+                        <div class="text-xl font-bold font-heading text-navanurakDark leading-tight tracking-tight">
+                            ไทยเบิ้ง <span class="text-terracotta">บ้านโคกสลุง</span>
+                        </div>
+                        <div class="text-[11px] text-slate-500 font-medium tracking-wide">
+                            พิพิธภัณฑ์พื้นบ้านและคลังข้อมูลดิจิทัลวัฒนธรรม จ.ลพบุรี
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Desktop Menu -->
+                <nav class="hidden lg:flex items-center space-x-6 font-medium text-slate-700 text-sm">
+                    <a href="#about" class="hover:text-terracotta transition py-1">ประวัติพิพิธภัณฑ์</a>
+                    <a href="#bases" class="hover:text-terracotta transition py-1">8 ฐานการเรียนรู้</a>
+                    <a href="#objects" class="hover:text-terracotta transition py-1">คลังวัตถุจัดแสดง</a>
+                    <a href="#shop" class="hover:text-terracotta transition py-1">ผลิตภัณฑ์ชุมชน</a>
+                    <a href="#tourism" class="hover:text-terracotta transition py-1">ท่องเที่ยว & เวิร์กช็อป</a>
+                    <a href="#contact" class="hover:text-terracotta transition py-1">ติดต่อเรา & แผนที่</a>
+                </nav>
+
+                <!-- Action Items -->
+                <div class="flex items-center space-x-3">
+                    <!-- Cart Button -->
+                    <button onclick="toggleCartDrawer()" class="relative p-2.5 text-slate-700 hover:text-terracotta transition bg-stone-100 hover:bg-stone-200 rounded-full" title="ตะกร้าสินค้า">
+                        <i class="fa-solid fa-bag-shopping text-lg"></i>
+                        <span id="cartCountBadge" class="absolute -top-1 -right-1 bg-terracotta text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold">0</span>
+                    </button>
+
+                    <!-- Direct Contact CTA -->
+                    <a href="#contact" class="hidden sm:inline-flex items-center gap-2 bg-navanurakBlue hover:bg-navanurakDark text-white px-4 py-2.5 rounded-xl font-heading text-xs font-semibold shadow hover:shadow-md transition">
+                        <i class="fa-solid fa-phone"></i>
+                        <span>084-978-6782</span>
+                    </a>
+
+                    <!-- Mobile Menu Hamburger -->
+                    <button onclick="toggleMobileMenu()" class="lg:hidden p-2 text-slate-700 rounded-lg hover:bg-stone-100">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobileMenu" class="hidden lg:hidden bg-white border-t border-slate-100 px-6 py-4 space-y-3 shadow-xl">
+            <a href="#about" onclick="toggleMobileMenu()" class="block text-slate-700 hover:text-terracotta font-medium">ประวัติพิพิธภัณฑ์</a>
+            <a href="#bases" onclick="toggleMobileMenu()" class="block text-slate-700 hover:text-terracotta font-medium">8 ฐานการเรียนรู้</a>
+            <a href="#objects" onclick="toggleMobileMenu()" class="block text-slate-700 hover:text-terracotta font-medium">คลังวัตถุจัดแสดง</a>
+            <a href="#shop" onclick="toggleMobileMenu()" class="block text-slate-700 hover:text-terracotta font-medium">ผลิตภัณฑ์ชุมชน</a>
+            <a href="#tourism" onclick="toggleMobileMenu()" class="block text-slate-700 hover:text-terracotta font-medium">ท่องเที่ยว & เวิร์กช็อป</a>
+            <a href="#contact" onclick="toggleMobileMenu()" class="block text-slate-700 hover:text-terracotta font-medium">ติดต่อเรา & แผนที่</a>
+            <button onclick="toggleAdminModal(); toggleMobileMenu();" class="w-full text-left py-2 text-navanurakDark font-medium border-t border-slate-100">
+                <i class="fa-solid fa-chart-line mr-2"></i> แดชบอร์ดหลังบ้าน (Admin)
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section (Featuring the Real Photo: พิพิธภัณฑ์เรือนฝาค้อไทยเบิ้ง) -->
+    <section id="hero" class="relative overflow-hidden py-12 lg:py-20 bg-gradient-to-b from-cardLinen via-warmLinen to-warmLinen">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Column: Story & Official Info from Navanurak -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="inline-flex items-center gap-2 bg-ochreGold/15 border border-ochreGold/40 text-amber-900 px-4 py-1.5 rounded-full text-xs font-semibold">
+                        <i class="fa-solid fa-database text-ochreGold"></i> แพลตฟอร์มคลังข้อมูลดิจิทัล นวนุรักษ์ (NAVANURAK)
+                    </div>
+
+                    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-navanurakDark leading-tight font-heading">
+                        พิพิธภัณฑ์พื้นบ้าน <br>
+                        <span class="text-terracotta">ไทยเบิ้ง บ้านโคกสลุง</span> <br>
+                        <span class="text-2xl sm:text-3xl font-medium text-slate-600">มรดกภูมิปัญญาแห่งลุ่มน้ำป่าสัก จ.ลพบุรี</span>
+                    </h1>
+
+                    <div class="p-4 bg-white/80 backdrop-blur rounded-2xl border border-stone-200 shadow-sm text-slate-700 text-sm leading-relaxed space-y-2">
+                        <p class="font-medium text-navanurakDark">
+                            <i class="fa-solid fa-quote-left text-ochreGold text-lg mr-2"></i>
+                            <strong>พิพิธภัณฑ์พื้นบ้านไทยเบิ้งโคกสลุง</strong> ก่อตั้งขึ้นจากแรงบันดาลใจของชาวบ้าน โดยผู้เฒ่าผู้แก่ในหมู่บ้านได้ร่วมกันหาแนวทางในการฟื้นฟูประเพณีและวัฒนธรรมพื้นบ้านของชาวไทยเบิ้งขึ้นมาใหม่ เพื่อให้ชาวบ้านและอนุชนรุ่นหลังได้ร่วมระลึกถึงและสืบสานมรดกอันล้ำค่าของบรรพบุรุษชาวไทยเบิ้งในตำบลโคกสลุงอย่างยั่งยืน
+                        </p>
+                    </div>
+
+                    <!-- Fast Facts Grid -->
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2 text-xs">
+                        <div class="p-3 bg-white rounded-xl border border-stone-200 text-center">
+                            <div class="text-terracotta font-bold text-lg font-heading">เรือนฝาค้อ</div>
+                            <div class="text-slate-500 text-[11px]">สถาปัตยกรรมเอกลักษณ์</div>
+                        </div>
+                        <div class="p-3 bg-white rounded-xl border border-stone-200 text-center">
+                            <div class="text-navanurakDark font-bold text-lg font-heading">8 ฐาน</div>
+                            <div class="text-slate-500 text-[11px]">แหล่งเรียนรู้มีชีวิต</div>
+                        </div>
+                        <div class="p-3 bg-white rounded-xl border border-stone-200 text-center">
+                            <div class="text-forestGreen font-bold text-lg font-heading">100+ ชิ้น</div>
+                            <div class="text-slate-500 text-[11px]">คลังวัตถุวัฒนธรรม</div>
+                        </div>
+                        <div class="p-3 bg-white rounded-xl border border-stone-200 text-center">
+                            <div class="text-ochreGold font-bold text-lg font-heading">พ.ศ. 2420</div>
+                            <div class="text-slate-500 text-[11px]">ประวัติศาสตร์ชุมชน</div>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="flex flex-wrap gap-3 pt-2">
+                        <a href="#bases" class="inline-flex items-center justify-center gap-2 bg-terracotta hover:bg-terracottaDark text-white px-6 py-3 rounded-xl font-heading text-sm font-semibold shadow-md shadow-terracotta/20 transition">
+                            <i class="fa-solid fa-compass"></i>
+                            <span>สำรวจ 8 ฐานการเรียนรู้</span>
+                        </a>
+                        <a href="#objects" class="inline-flex items-center justify-center gap-2 bg-white hover:bg-stone-50 text-navanurakDark border border-stone-300 px-6 py-3 rounded-xl font-heading text-sm font-semibold shadow-sm transition">
+                            <i class="fa-solid fa-boxes-stacked text-ochreGold"></i>
+                            <span>ชมคลังวัตถุจัดแสดง</span>
+                        </a>
+                        <a href="#contact" class="inline-flex items-center justify-center gap-2 bg-navanurakBlue hover:bg-navanurakDark text-white px-5 py-3 rounded-xl font-heading text-sm font-semibold shadow transition">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <span>การเดินทาง & ติดต่อ</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Column: Real Hero Photo from Navanurak -->
+                <div class="lg:col-span-5">
+                    <div class="bg-white rounded-3xl p-4 shadow-2xl border border-stone-200 relative">
+                        <!-- Real Photo -->
+                        <div class="relative h-80 sm:h-96 rounded-2xl overflow-hidden bg-slate-100 group">
+                            <img src="https://www.navanurak.in.th/thaibuengkhoksalung/pic/profile_upload/2021-10-13_11-46-50_%E0%B8%9E%E0%B8%B4%E0%B8%9E%E0%B8%B4%E0%B8%98%E0%B8%A0%E0%B8%B1%E0%B8%93%E0%B8%91%E0%B9%8C%E0%B9%80%E0%B8%A3%E0%B8%B7%E0%B8%AD%E0%B8%99%E0%B8%9d%E0%B8%B2%E0%B8%84%E0%B9%89%E0%B8%AD%E0%B9%84%E0%B8%97%E0%B8%A2%E0%B9%80%E0%B8%9a%E0%B8%B4%E0%B9%89%E0%B8%87.JPG" 
+                                 alt="พิพิธภัณฑ์เรือนฝาค้อไทยเบิ้ง" 
+                                 class="w-full h-full object-cover img-zoom">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                            
+                            <div class="absolute top-4 left-4">
+                                <span class="bg-terracotta text-white text-xs font-semibold px-3 py-1 rounded-full shadow">
+                                    ภาพจริงจากคลังนวนุรักษ์
+                                </span>
+                            </div>
+
+                            <div class="absolute bottom-4 left-4 right-4 text-white">
+                                <div class="text-xs text-amber-300 font-semibold uppercase">สถาปัตยกรรมพื้นบ้าน</div>
+                                <h3 class="text-xl font-bold font-heading mt-0.5">พิพิธภัณฑ์เรือนฝาค้อไทยเบิ้ง</h3>
+                                <p class="text-xs text-slate-200 mt-1">เรือนไม้โบราณที่นำใบต้นค้อประกบไม้ไผ่ทำฝาบ้าน ภูมิปัญญาเฉพาะถิ่นลุ่มน้ำป่าสัก</p>
+                            </div>
+                        </div>
+
+                        <!-- Badge under image -->
+                        <div class="mt-4 p-3 bg-cardLinen rounded-xl flex items-center justify-between text-xs">
+                            <div class="flex items-center space-x-2 text-navanurakDark font-medium">
+                                <i class="fa-solid fa-map-pin text-terracotta"></i>
+                                <span>ตั้งอยู่ตรงข้ามโรงเรียนโคกสลุง อ.พัฒนานิคม จ.ลพบุรี</span>
+                            </div>
+                            <a href="#contact" class="text-terracotta hover:underline font-bold">พิกัด <i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 1: 8 ฐานการเรียนรู้ชุมชนโคกสลุง (8 Authentic Learning Bases with REAL Navanurak Photos) -->
+    <section id="bases" class="py-20 bg-white border-t border-stone-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <div class="text-terracotta font-semibold text-xs sm:text-sm uppercase tracking-wider mb-2">
+                    หมวดหมู่ฐานการเรียนรู้ชุมชน (รหัสหมวด 38 บนระบบนวนุรักษ์)
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-bold font-heading text-navanurakDark">
+                    8 ฐานการเรียนรู้ภูมิปัญญาไทยเบิ้งโคกสลุง
+                </h2>
+                <div class="w-20 h-1 bg-ochreGold mx-auto mt-4 rounded-full"></div>
+                <p class="text-slate-600 mt-3 text-sm sm:text-base">
+                    รวบรวมข้อมูลและภาพถ่ายจริงจากคลังดิจิทัล สัมผัสวิถีชีวิต งานหัตถกรรม อาหารพื้นบ้าน และประวัติศาสตร์ชุมชน
+                </p>
+            </div>
+
+            <!-- 8 Bases Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- Base 1: พวงมะโหตร -->
+                <div class="bg-warmLinen rounded-2xl overflow-hidden border border-stone-200 shadow-sm hover:shadow-xl transition group flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-48 bg-stone-100 overflow-hidden">
+                            <img src="https://www.navanurak.in.th/thaibuengkhoksalung/pic/thumbmuse/256301/Thumb_2020-10-29_09-31-26_%E0%B8%A1%E0%B8%B0%E0%B9%82%E0%B8%88%E0%B8%95%E0%B8%A32.jpg" 
+                                 alt="พวงมะโหตร" class="w-full h-full object-cover img-zoom">
+                            <span class="absolute top-3 left-3 bg-navanurakDark/90 text-amber-200 text-[10px] font-bold px-2.5 py-1 rounded-md">
+                                รหัส 2563-01
+                            </span>
+                        </div>
+                        <div class="p-5">
+                            <span class="text-[11px] font-bold text-terracotta uppercase">งานศิลปะความเชื่อ</span>
+                            <h3 class="text-lg font-bold font-heading text-navanurakDark mt-1">พวงมะโหตร</h3>
+                            <p class="text-xs text-slate-600 mt-2 line-clamp-3 leading-relaxed">
+                                ศิลปะการตัดกระดาษแก้วหลากสีซ้อนชั้น พับเป็นกรวยจรวดแล้วตัดสลับฟันปลา คลี่ออกเป็นพวงสวยงามสำหรับประดับงานบุญมงคล
+                            </p>
+                        </div>
+                    </div>
+                    <div class="px-5 pb-5 pt-2 border-t border-stone-200/60 flex items-center justify-between">
+                        <span class="text-xs text-forestGreen font-semibold"><i class="fa-solid fa-chalkboard-user mr-1"></i> มีเวิร์กช็อป</span>
+                        <button onclick="openBaseModal('ฐานพวงมะโหตร (รหัส 2563-01)', 'พวงมะโหตร คือศิลปะการตัดกระดาษสีซ้อนชั้นภูมิปัญญาโบราณ ใช้ประดับในงานบุญ งานแต่ง และเทศกาลมงคล เชื่อว่าจะนำพาความรุ่งเรืองและสิริมงคลมาสู่ชีวิต อุปกรณ์ประกอบด้วย กระดาษว่าวหลากสี, กรรไกร, หัวพวงมะโหตรกระดาษแข็ง และเชือกร้อย', 'https://www.navanurak.in.th/thaibuengkhoksalung/pic/thumbmuse/256301/Thumb_2020-10-29_09-31-26_%E0%B8%A1%E0%B8%B0%E0%B9%82%E0%B8%88%E0%B8%95%E0%B8%A32.jpg', '250')" class="text-xs font-bold text-terracotta hover:underline">
+                            อ่านวิธีทำ <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Base 2: พริกตะเกลือ -->
+                <div class="bg-warmLinen rounded-2xl overflow-hidden border border-stone-200 shadow-sm hover:shadow-xl transition group flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-48 bg-stone-100 overflow-hidden">
+                            <img src="https://www.navanurak.in.th/thaibuengkhoksalung/pic/thumbmuse/256302/Thumb_2020-10-29_09-38-54_prick4.jpg" 
+                                 alt="พริกตะเกลือ" class="w-full h-full object-cover img-zoom">
+                            <span class="absolute top-3 left-3 bg-navanurakDark/90 text-amber-200 text-[10px] font-bold px-2.5 py-1 rounded-md">
+                                รหัส 2563-02
+                            </span>
+                        </div>
+                        <div class="p-5">
+                            <span class="text-[11px] font-bold text-terracotta uppercase">อาหาร & เครื่องปรุง</span>
+                            <h3 class="text-lg font-bold font-heading text-navanurakDark mt-1">พริกตะเกลือ</h3>
+                            <p class="text-xs text-slate-600 mt-2 line-clamp-3 leading-relaxed">
+                                เครื่องปรุงและเครื่องจิ้มโบราณรสเด็ด นำพริกแห้ง เกลือ กระเทียม และสมุนไพรพื้นบ้านมาโขลกให้เข้ากัน ใช้จิ้มผลไม้หรือคลุกข้าวสวยร้อนๆ
+                            </p>
+                        </div>
+                    </div>
+                    <div class="px-5 pb-5 pt-2 border-t border-stone-200/60 flex items-center justify-between">
+                        <span class="text-xs text-forestGreen font-semibold"><i class="fa-solid fa-utensils mr-1"></i> อาหารพื้นบ้าน</span>
+                        <button onclick="openBaseModal('ฐานพริกตะเกลือ (รหัส 2563-02)', 'พริกตะเกลือ เป็นเครื่องปรุงและเครื่องจิ้มที่มีประวัติศาสตร์คู่ครัวไทยเบิ้งมาช้านาน รสชาติกลมกล่อม เผ็ดเค็มกำลังดี ใช้สมุนไพรในท้องถิ่น เช่น ผลกำจัด (มะข่วง) เพิ่มความหอมซ่าเป็นเอกลักษณ์ นิยมใช้เป็นเสบียงพกพาเวลาไปทำไร่ทำนา', 'https://www.navanurak.in.th/thaibuengkhoksalung/pic/thumbmuse/256302/Thumb_2020-10-29_09-38-54_prick4.jpg', '80')" class="text-xs font-bold text-terracotta hover:underline">
+                            อ่านรายละเอียด <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Base 3: ของเล่นจากใบลาน -->
+                <div class="bg-warmLinen rounded-2xl overflow-hidden border border-stone-200 shadow-sm hover:shadow-xl transition group flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-48 bg-stone-100 overflow-hidden">
+                            <img src="https://www.navanurak.in.th/thaibuengkhoksalung/pic/thumbmuse/256303/Thumb_2020-10-29_09-51-09_%E0%B9%83%E0%B8%9a%E0%B8%95%E0%B8%B2%E0%B8%A5.jpg" 
+                                 alt="ของเล่นจากใบลาน" class="w-full h-full object-cover img-zoom">
+                            <span class="absolute top-3 left-3 bg-navanurakDark/90 text-amber-200 text-[10px] font-bold px-2.5 py-1 rounded-md">
+                                รหัส 2563-03
+                            </span>
+                        </div>
+                        <div class="p-5">
+                            <span class="text-[11px] font-bold text-terracotta uppercase">ของเล่นพื้นบ้าน</span>
+                            <h3 class="text-lg font-bold font-heading text-navanurakDark mt-1">ของเล่นจากใบลาน</h3>
+                            <p class="text-xs text-slate-600 mt-2 line-clamp-3 leading-relaxed">
+                                ภูมิปัญญาการนำใบลานและใบตาลที่มีในท้องถิ่นมาสานเป็นรูปสัตว์ ของเล่นเด็ก เช่น ปลาตะเพียน ตั๊กแตน กังหันลม เสริมสร้างจินตนาการ
+                            </p>
+                        </div>
+                    </div>
+                    <div class="px-5 pb-5 pt-2 border-t border-stone-200/60 flex items-center justify-between">
+                        <span class="text-xs text-forestGreen font-semibold"><i class="fa-solid fa-shapes mr-1"></i> กิจกรรมครอบครัว</span>
+                        <button onclick="openBaseModal('ฐานของเล่นจากใบลาน (รหัส 2563-03)', 'ของเล่นจากใบลานและใบตาล สะท้อนความผูกพันระหว่างคนในชุมชนกับธรรมชาติ ผู้ใหญ่มักสานของเล่นให้ลูกหลานยามว่างจากการทำเกษตร เป็นงานฝีมือที่ฝึกสมาธิและความประณีต ปัจจุบันพัฒนาเป็นของที่ระลึกของฝากสร้างรายได้เสริม', 'https://www.navanurak.in.th/thaibuengkhoksalung/pic/thumbmuse/256303/Thumb_2020-10-29_09-51-09_%E0%B9%83%E0%B8%9a%E0%B8%95%E0%B8%B2%E0%B8%A5.jpg', '120')" class="text-xs font-bold text-terracotta hover:underline">
+                            อ่านรายละเอียด <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Base 4: ขนมเบื้องไทยเบิ้ง -->
+                <div class="bg-warmLinen rounded-2xl overflow-hidden border border-stone-200 shadow-sm hover:shadow-xl transition group flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-48 bg-stone-100 overflow-hidden">
+                            <img src="https://www.navanurak.in.th/thaibuengkhoksalung/pic/thumbmuse/256304/Thumb_2020-10-29_09-58-30_%E0%B8%82%E0%B8%99%E0%B8%A1%E0%B9%80%E0%B8%9a%E0%B8%B7%E0%B9%89%E0%B8%AD%E0%B8%871.jpg" 
+                                 alt="ขนมเบื้องไทยเบิ้ง" class="w-full h-full object-cover img-zoom">
+                            <span class="absolute top-3 left-3 bg-navanurakDark/90 text-amber-200 text-[10px] font-bold px-2.5 py-1 rounded-md">
+                                รหัส 2563-04
+                            </span>
+                        </div>
+                        <div class="p-5">
+                            <span class="text-[11px] font-bold text-terracotta uppercase">ของหวานโบราณ</span>
+                            <h3 class="text-lg font-bold font-heading text-navanurakDark mt-1">ขนมเบื้องไทยเบิ้ง</h3>
+                            <p class="text-xs text-slate-600 mt-2 line-clamp-3 leading-relaxed">
+                                ขนมเบื้องโบราณแท้ แป้งโม่สดด้วยโม่หิน ละเลงบนกระทะเหล็กหนา ไส้เค็มหอมมันกุ้งมะพร้าวขูด และไส้หวานฝอยทองน้ำตาลมะพร้าว
+                            </p>
+                        </div>
+                    </div>
+                    <div class="px-5 pb-5 pt-2 border-t border-stone-200/60 flex items-center justify-between">
+                        <span class="text-xs text-amber-700 font-semibold"><i class="fa-solid fa-cookie mr-1"></i> เมนูยอดนิยม</span>
+                        <button onclick="openBaseModal('ฐานขนมเบื้องไทยเบิ้ง (รหัส 2563-04)', 'ขนมเบื้องไทยเบิ้งบ้านโคกสลุง มีเอกลักษณ์ตรงแป้งที่ทำจากข้าวสารบดด้วยโม่หินโบราณ ละเลงเป็นแผ่นกลมบางกรอบ ไส้ใช้วัตถุดิบธรรมชาติ ทั้งน้ำตาลโตนด มะพร้าวขูดสด งาคั่ว เป็นขนมที่ใช้ในงานบุญและต้อนรับแขกบ้านแขกเมือง', 'https://www.navanurak.in.th/thaibuengkhoksalung/pic/thumbmuse/256304/Thumb_2020-10-29_09-58-30_%E0%B8%82%E0%B8%99%E0%B8%A1%E0%B9%80%E0%B8%9a%E0%B8%B7%E0%B9%89%E0%B8%AD%E0%B8%871.jpg', '150')" class="text-xs font-bold text-terracotta hover:underline">
+                            อ่านรายละเอียด <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Base 5: การทอเสื่อกก -->
+                <div class="bg-warmLinen rounded-2xl overflow-hidden border border-stone-200 shadow-sm hover:shadow-xl transition group flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-48 bg-stone-100 overflow-hidden">
+                            <img src="https://www.navanurak.in.th/thaibuengkhoksalung/pic/thumbmuse/256305/Thumb_2020-10-29_10-18-44_%E0%B8%97%E0%B8%AD%E0%B9%80%E0%B8%AA%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%81%E0%B8%81.jpg" 
+                                 alt="การทอเสื่อกก" class="w-full h-full object-cover img-zoom">
+                            <span class="absolute top-3 left-3 bg-navanurakDark/90 text-amber-200 text-[10px] font-bold px-2.5 py-1 rounded-md">
+                                รหัส 2563-05
+                            </span>
+                        </div>
+                        <div class="p-5">
+                            <span class="text-[11px] font-bold text-terracotta uppercase">หัตถกรรมเครื่องใช้</span>
+                            <h3 class="text-lg font-bold font-heading text-navanurakDark mt-1">การทอเสื่อกก</h3>
+                            <p class="text-xs text-slate-600 mt-2 line-clamp-3 leading-relaxed">
+                                การเก็บเกี่ยวต้นกกริมแม่น้ำป่าสัก นำมากรีด ตากแห้ง ย้อมสีธรรมชาติ และทอเป็นผืนเสื่อแน่นหนา นุ่มเย็น ปูนอนและใช้ในพิธีมงคล
+                            </p>
+                        </div>
+                    </div>
+                    <div class="px-5 pb-5 pt-2 border-t border-stone-200/60 flex items-center justify-between">
+                        <span class="text-xs text-forestGreen font-semibold"><i class="fa-solid fa-rug mr-1"></i> งานจักสาน</span>
+                        <button onclick="openBaseModal('ฐานการทอเสื่อกก (รหัส 2563-05)', 'เสื่อกกโคกสลุงใช้วัตถุดิบต้นกกในลุ่มน้ำป่าสัก ผ่านกระบวนการตากแดด ย้อมสีด้วยเปลือกไม้และสีธรรมชาติ ทอด้วยกี่ทอมือแบบโบราณ ให้ความทนทาน ระบายความร้อนได้ดีเยี่ยม และเป็นงานฝีมือที่อนุรักษ์ลวดลายพื้นบ้านไว้', 'https://www.navanurak.in.th/thaibuengkhoksalung/pic/thumbmuse/256305/Thumb_2020-10-29_10-18-44_%E0%B8%97%E0%B8%AD%E0%B9%80%E0%B8%AA%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%81%E0%B8%81.jpg', '350')" class="text-xs font-bold text-terracotta hover:underline">
+                            อ่านรายละเอียด <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Base 6: การทอผ้าพื้นบ้าน -->
+                <div class="bg-warmLinen rounded-2xl overflow-hidden border border-stone-200 shadow-sm hover:shadow-xl transition group flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-48 bg-stone-100 overflow-hidden">
+                            <img src="https://www.navanurak.in.th/thaibuengkhoksalung/pic/thumbmuse/256306/Thumb_2020-10-29_10-21-56_%E0%B8%97%E0%B8%AD%E0%B8%9c%E0%B9%89%E0%B8%B2.jpg" 
+                                 alt="การทอผ้าพื้นบ้าน" class="w-full h-full object-cover img-zoom">
+                            <span class="absolute top-3 left-3 bg-navanurakDark/90 text-amber-200 text-[10px] font-bold px-2.5 py-1 rounded-md">
+                                รหัส 2563-06
+                            </span>
+                        </div>
+                        <div class="p-5">
+                            <span class="text-[11px] font-bold text-terracotta uppercase">ผ้าทอโบราณ</span>
+                            <h3 class="text-lg font-bold font-heading text-navanurakDark mt-1">การทอผ้าพื้นบ้าน</h3>
+                            <p class="text-xs text-slate-600 mt-2 line-clamp-3 leading-relaxed">
+                                ผ้าขาวม้า ผ้าสไบ และย่ามไทยเบิ้ง ทอด้วยกี่โบราณโดยช่างทอผ้าในชุมชน เนื้อผ้านุ่ม ระบายอากาศ ลวดลายคั่นโบราณอันเป็นเอกลักษณ์
+                            </p>
+                        </div>
+                    </div>
+                    <div class="px-5 pb-5 pt-2 border-t border-stone-200/60 flex items-center justify-between">
+                        <span class="text-xs text-terracotta font-semibold"><i class="fa-solid fa-star mr-1"></i> OTOP ประจำถิ่น</span>
+                        <button onclick="openBaseModal('ฐานการทอผ้าพื้นบ้านไทยเบิ้ง (รหัส 2563-06)', 'ผ้าทอไทยเบิ้งโคกสลุงเป็นมรดกที่แม่ถ่ายทอดสู่ลูกสาว ทอด้วยฝ้ายธรรมชาติ ลวดลายคั่นและลายขิดดั้งเดิม นิยมใช้ทำผ้าขาวม้า ผ้าถุง และย่ามสะพายไหล่สีแดงอันเป็นเครื่องแต่งกายประจำชาติพันธุ์ไทยเบิ้ง', 'https://www.navanurak.in.th/thaibuengkhoksalung/pic/thumbmuse/256306/Thumb_2020-10-29_10-21-56_%E0%B8%97%E0%B8%AD%E0%B8%9c%E0%B9%89%E0%B8%B2.jpg', '450')" class="text-xs font-bold text-terracotta hover:underline">
+                            อ่านรายละเอียด <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Base 7: สถานีรถไฟ & สะพานรถไฟลอยน้ำโคกสลุง -->
+                <div class="bg-warmLinen rounded-2xl overflow-hidden border border-stone-200 shadow-sm hover:shadow-xl transition group flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-48 bg-stone-100 overflow-hidden">
+                            <img src="https://www.navanurak.in.th/thaibuengkhoksalung/pic/thumbmuse/256307/Thumb_2022-05-04_23-57-04_120_DJI_0084.jpg" 
+                                 alt="สถานีรถไฟโคกสลุง" class="w-full h-full object-cover img-zoom">
+                            <span class="absolute top-3 left-3 bg-navanurakDark/90 text-amber-200 text-[10px] font-bold px-2.5 py-1 rounded-md">
+                                รหัส 2563-07
+                            </span>
+                        </div>
+                        <div class="p-5">
+                            <span class="text-[11px] font-bold text-terracotta uppercase">แลนด์มาร์กท่องเที่ยว</span>
+                            <h3 class="text-lg font-bold font-heading text-navanurakDark mt-1">รถไฟลอยน้ำโคกสลุง</h3>
+                            <p class="text-xs text-slate-600 mt-2 line-clamp-3 leading-relaxed">
+                                สะพานรถไฟข้ามอ่างเก็บน้ำเขื่อนป่าสักชลสิทธิ์ ทิวทัศน์งดงามตระการตา ได้รับความนิยมระดับประเทศ เป็นจุดชมพระอาทิตย์ตกดินที่สวยงามที่สุด
+                            </p>
+                        </div>
+                    </div>
+                    <div class="px-5 pb-5 pt-2 border-t border-stone-200/60 flex items-center justify-between">
+                        <span class="text-xs text-navanurakBlue font-semibold"><i class="fa-solid fa-train mr-1"></i> จุดเช็คอินยอดฮิต</span>
+                        <button onclick="openBaseModal('ฐานสถานีรถไฟ & รถไฟลอยน้ำโคกสลุง (รหัส 2563-07)', 'จุดชมวิวสะพานรถไฟลอยน้ำโคกสลุง เป็นส่วนหนึ่งของเส้นทางรถไฟสายแก่งคอย-บัวใหญ่ ข้ามผ่านผืนน้ำเขื่อนป่าสักชลสิทธิ์ ในฤดูน้ำหลากรถไฟจะแล่นเสมือนลอยอยู่เหนือน้ำ บรรยากาศเงียบสงบและถ่ายรูปสวยงามมาก', 'https://www.navanurak.in.th/thaibuengkhoksalung/pic/thumbmuse/256307/Thumb_2022-05-04_23-57-04_120_DJI_0084.jpg', '0')" class="text-xs font-bold text-terracotta hover:underline">
+                            อ่านรายละเอียด <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Base 8: วัดโคกสำราญ (วัดโคกสลุง) -->
+                <div class="bg-warmLinen rounded-2xl overflow-hidden border border-stone-200 shadow-sm hover:shadow-xl transition group flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-48 bg-stone-100 overflow-hidden">
+                            <img src="https://www.navanurak.in.th/thaibuengkhoksalung/pic/thumbmuse/256308/Thumb_2021-10-13_11-24-58_IMG_7727.JPG" 
+                                 alt="วัดโคกสำราญ" class="w-full h-full object-cover img-zoom">
+                            <span class="absolute top-3 left-3 bg-navanurakDark/90 text-amber-200 text-[10px] font-bold px-2.5 py-1 rounded-md">
+                                รหัส 2563-08
+                            </span>
+                        </div>
+                        <div class="p-5">
+                            <span class="text-[11px] font-bold text-terracotta uppercase">ประวัติศาสตร์ & อารยธรรม</span>
+                            <h3 class="text-lg font-bold font-heading text-navanurakDark mt-1">วัดโคกสำราญ</h3>
+                            <p class="text-xs text-slate-600 mt-2 line-clamp-3 leading-relaxed">
+                                วัดเก่าแก่สร้างเมื่อ พ.ศ. 2420 สถาปัตยกรรมสิมอีสานฝีมือช่างญวน และค้นพบโบราณสถานฐานโยนีสมัยขอม บ่งบอกความเก่าแก่นับพันปี
+                            </p>
+                        </div>
+                    </div>
+                    <div class="px-5 pb-5 pt-2 border-t border-stone-200/60 flex items-center justify-between">
+                        <span class="text-xs text-ochreGold font-semibold"><i class="fa-solid fa-vihara mr-1"></i> โบราณสถาน</span>
+                        <button onclick="openBaseModal('ฐานวัดโคกสำราญ สืบรอยอดีตโคกสลุง (รหัส 2563-08)', 'วัดโคกสำราญ หรือเดิมชื่อวัดโคกสลุง ก่อตั้งเมื่อประมาณ พ.ศ. 2420 มีสถาปัตยกรรมโบสถ์เก่าทรงสิมภาคอีสานฝีมือช่างญวน เหนือกรอบวงโค้งติดกระจกเงา บริเวณรอบวัดยังค้นพบชิ้นส่วนสถาปัตยกรรมหินทรายและฐานโยนีสมัยขอม สะท้อนการตั้งถิ่นฐานมาแต่โบราณ', 'https://www.navanurak.in.th/thaibuengkhoksalung/pic/thumbmuse/256308/Thumb_2021-10-13_11-24-58_IMG_7727.JPG', '0')" class="text-xs font-bold text-terracotta hover:underline">
+                            อ่านรายละเอียด <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: คลังข้อมูลวัตถุจัดแสดงภูมิปัญญา (Digital Museum Objects from Navanurak Database) -->
+    <section id="objects" class="py-20 bg-warmLinen border-t border-stone-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                <div>
+                    <div class="text-terracotta font-semibold text-xs sm:text-sm uppercase tracking-wider mb-2">
+                        คลังข้อมูลดิจิทัลทางวัฒนธรรม (Culture & Biodiversity Objects)
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-bold font-heading text-navanurakDark">
+                        วัตถุจัดแสดงและภูมิปัญญาท้องถิ่น
+                    </h2>
+                    <p class="text-slate-600 text-sm mt-2">
+                        วัตถุ เครื่องมือทำมาหากิน และสมุนไพรพื้นบ้านที่บันทึกไว้ในฐานข้อมูลดิจิทัลพิพิธภัณฑ์พื้นบ้านไทยเบิ้ง
+                    </p>
+                </div>
+                <div class="mt-4 md:mt-0 flex items-center space-x-2 text-xs">
+                    <span class="bg-white px-3 py-1.5 rounded-lg border border-stone-200 font-medium text-slate-700 shadow-sm">
+                        <i class="fa-solid fa-cube text-ochreGold mr-1"></i> ข้อมูลบันทึกตามมาตรฐานจดหมายเหตุ
+                    </span>
+                </div>
+            </div>
+
+            <!-- Exhibits Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Object 1: คอม -->
+                <div class="bg-white rounded-2xl p-5 shadow-sm border border-stone-200 hover:shadow-lg transition flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-48 rounded-xl overflow-hidden bg-stone-100 mb-4">
+                            <img src="https://www.navanurak.in.th/thaibuengkhoksalung/pic/thumbmuse/ksl02137/Thumb_2022-02-23_21-48-27_21.jpg" 
+                                 alt="คอม" class="w-full h-full object-cover img-zoom">
+                            <span class="absolute top-2 left-2 bg-navanurakDark text-amber-200 text-[10px] font-bold px-2 py-0.5 rounded">
+                                KSL02-137
+                            </span>
+                        </div>
+                        <div class="text-[11px] text-terracotta font-bold uppercase">เครื่องมือเกษตรกรรม</div>
+                        <h4 class="text-lg font-bold font-heading text-navanurakDark mt-0.5">คอม (ที่คล้องคอควายไถนา)</h4>
+                        <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+                            สำหรับคล้องคอควาย เพื่อมัดคร่าวให้ติดกับตัวคันไถ ใช้บังคับทิศทางให้ควายเดินไปตามเส้นทางที่ต้องการ หากเปรียบเทียบกับรถยนต์ในปัจจุบันก็คือ <strong>"พวงมาลัยบังคับทิศทางของรถ"</strong> นั่นเอง
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-stone-100 flex items-center justify-between text-xs text-slate-500">
+                        <span><i class="fa-solid fa-tree mr-1"></i> ทำจากไม้จริงและเชือก</span>
+                        <span class="text-navanurakBlue font-semibold">จัดแสดง: ใต้ถุนเรือน</span>
+                    </div>
+                </div>
+
+                <!-- Object 2: เสวียน -->
+                <div class="bg-white rounded-2xl p-5 shadow-sm border border-stone-200 hover:shadow-lg transition flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-48 rounded-xl overflow-hidden bg-stone-100 mb-4">
+                            <img src="https://www.navanurak.in.th/thaibuengkhoksalung/pic/thumbmuse/ksl02136/Thumb_2022-02-23_21-40-03_19.jpg" 
+                                 alt="เสวียน" class="w-full h-full object-cover img-zoom">
+                            <span class="absolute top-2 left-2 bg-navanurakDark text-amber-200 text-[10px] font-bold px-2 py-0.5 rounded">
+                                KSL02-136
+                            </span>
+                        </div>
+                        <div class="text-[11px] text-terracotta font-bold uppercase">เครื่องจักสานพื้นบ้าน</div>
+                        <h4 class="text-lg font-bold font-heading text-navanurakDark mt-0.5">เสวียน (ฝายุ้งข้าวและคอกเกวียน)</h4>
+                        <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+                            นิยมทำจากไม้ไผ่รวก หรือไม้ไผ่สีสุก สานเป็นแผ่นยาวๆ และม้วนได้ ใช้สำหรับกั้นทำฝายุ้งข้าวโดยกั้นด้านใน หรือสำหรับทำเป็นคอกบนเกวียนเพื่อบรรทุกข้าวเปลือกไม่ให้ร่วงหล่น
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-stone-100 flex items-center justify-between text-xs text-slate-500">
+                        <span><i class="fa-solid fa-leaf mr-1"></i> ไม้ไผ่สีสุกสาน</span>
+                        <span class="text-navanurakBlue font-semibold">จัดแสดง: โรงเกวียน</span>
+                    </div>
+                </div>
+
+                <!-- Object 3: โม่หิน -->
+                <div class="bg-white rounded-2xl p-5 shadow-sm border border-stone-200 hover:shadow-lg transition flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-48 rounded-xl overflow-hidden bg-stone-100 mb-4">
+                            <img src="https://www.navanurak.in.th/thaibuengkhoksalung/pic/thumbmuse/ksl02135/Thumb_2022-02-23_21-37-48_17.jpg" 
+                                 alt="โม่หิน" class="w-full h-full object-cover img-zoom">
+                            <span class="absolute top-2 left-2 bg-navanurakDark text-amber-200 text-[10px] font-bold px-2 py-0.5 rounded">
+                                KSL02-135
+                            </span>
+                        </div>
+                        <div class="text-[11px] text-terracotta font-bold uppercase">เครื่องใช้ในครัวเรือน</div>
+                        <h4 class="text-lg font-bold font-heading text-navanurakDark mt-0.5">โม่หิน (เครื่องบดแป้งโบราณ)</h4>
+                        <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+                            ทำจากหินแท้ มี 2 ส่วนหลักคือฐานและตัวโม่ด้านบน ใช้สำหรับโม่บดข้าวสารแช่น้ำให้กลายเป็นน้ำแป้งสดสำหรับทำขนมเบื้องไทยเบิ้ง หรือโม่ข้าวคั่วหอมกรุ่นในครัวเรือน
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-stone-100 flex items-center justify-between text-xs text-slate-500">
+                        <span><i class="fa-solid fa-mountain mr-1"></i> หินแกรนิตแกะสลัก</span>
+                        <span class="text-navanurakBlue font-semibold">จัดแสดง: เรือนครัว</span>
+                    </div>
+                </div>
+
+                <!-- Object 4: คันหลาว & คันฉาย -->
+                <div class="bg-white rounded-2xl p-5 shadow-sm border border-stone-200 hover:shadow-lg transition flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-48 rounded-xl overflow-hidden bg-stone-100 mb-4">
+                            <img src="https://www.navanurak.in.th/thaibuengkhoksalung/pic/thumbmuse/ksl02127/Thumb_2022-02-23_21-06-46_2.jpg" 
+                                 alt="คันหลาว" class="w-full h-full object-cover img-zoom">
+                            <span class="absolute top-2 left-2 bg-navanurakDark text-amber-200 text-[10px] font-bold px-2 py-0.5 rounded">
+                                KSL02-127
+                            </span>
+                        </div>
+                        <div class="text-[11px] text-terracotta font-bold uppercase">เครื่องมือเก็บเกี่ยว</div>
+                        <h4 class="text-lg font-bold font-heading text-navanurakDark mt-0.5">คันหลาว (ไม้หาบฟ่อนข้าว)</h4>
+                        <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+                            ตัดจากไม้ไผ่ทั้งลำยาวประมาณ 2 เมตร ปาดปลายทั้งสองด้านให้เป็นปากฉลามแหลมสลับกัน ใช้สำหรับเสียบแทงหาบฟ่อนข้าวเปลือกที่เกี่ยวแล้วนำมารวมกันที่ลานนวดข้าว
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-stone-100 flex items-center justify-between text-xs text-slate-500">
+                        <span><i class="fa-solid fa-wheat-awn mr-1"></i> ภูมิปัญญาการทำนา</span>
+                        <span class="text-navanurakBlue font-semibold">จัดแสดง: ใต้ถุนเรือน</span>
+                    </div>
+                </div>
+
+                <!-- Object 5: ประเพณีใส่บาตรลูกอม -->
+                <div class="bg-white rounded-2xl p-5 shadow-sm border border-stone-200 hover:shadow-lg transition flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-48 rounded-xl overflow-hidden bg-stone-100 mb-4">
+                            <img src="https://www.navanurak.in.th/thaibuengkhoksalung/pic/thumbmuse/ksl0303/Thumb_2021-10-13_12-46-24_IMG_9111.JPG" 
+                                 alt="ประเพณีใส่บาตรลูกอม" class="w-full h-full object-cover img-zoom">
+                            <span class="absolute top-2 left-2 bg-navanurakDark text-amber-200 text-[10px] font-bold px-2 py-0.5 rounded">
+                                KSL03-03
+                            </span>
+                        </div>
+                        <div class="text-[11px] text-terracotta font-bold uppercase">วัฒนธรรมประเพณี</div>
+                        <h4 class="text-lg font-bold font-heading text-navanurakDark mt-0.5">ประเพณีใส่บาตรลูกอม</h4>
+                        <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+                            ประเพณีหนึ่งเดียวในวันเทโวโรหณะ ชาวไทยเบิ้งโคกสลุงจะกวนลูกอมด้วยธัญพืชและน้ำอ้อย นำมาใส่บาตรเพื่อให้พระสงฆ์ได้พกติดย่ามไว้ฉันยามออกธุดงค์ แสดงถึงศรัทธาอันเปี่ยมล้น
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-stone-100 flex items-center justify-between text-xs text-slate-500">
+                        <span><i class="fa-solid fa-hands-praying mr-1"></i> ประเพณีประจำปี</span>
+                        <span class="text-navanurakBlue font-semibold">วันออกพรรษา (เทโวฯ)</span>
+                    </div>
+                </div>
+
+                <!-- Object 6: สมุนไพรกำจัด (มะข่วง) -->
+                <div class="bg-white rounded-2xl p-5 shadow-sm border border-stone-200 hover:shadow-lg transition flex flex-col justify-between">
+                    <div>
+                        <div class="relative h-48 rounded-xl overflow-hidden bg-stone-100 mb-4">
+                            <img src="https://www.navanurak.in.th/thaibuengkhoksalung/pic/thumbspecimen/ksl0121/Thumb_2022-02-25_19-16-55_26.jpg" 
+                                 alt="สมุนไพรกำจัด" class="w-full h-full object-cover img-zoom">
+                            <span class="absolute top-2 left-2 bg-forestGreen text-white text-[10px] font-bold px-2 py-0.5 rounded">
+                                KSL01-21 (ชีวภาพ)
+                            </span>
+                        </div>
+                        <div class="text-[11px] text-forestGreen font-bold uppercase">ทรัพยากรชีวภาพท้องถิ่น</div>
+                        <h4 class="text-lg font-bold font-heading text-navanurakDark mt-0.5">ผลกำจัด (มะข่วง / หมากข่วง)</h4>
+                        <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+                            เครื่องเทศและสมุนไพรประจำถิ่นโคกสลุง ผลกลมแห้งสีน้ำตาลแดง มีรสเผ็ดซ่า กลิ่นฉุนหอมคล้ายมะกรูด ใช้ปรุงในอาหารเกือบทุกสำรับ เช่น แกงเครื่องดำ แกงป่า และพริกตะเกลือ
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-stone-100 flex items-center justify-between text-xs text-slate-500">
+                        <span><i class="fa-solid fa-seedling mr-1"></i> บำรุงหัวใจ ขับลม</span>
+                        <span class="text-forestGreen font-semibold">เครื่องเทศเอกลักษณ์</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: ตลาดสินค้าชุมชนและวิสาหกิจ OTOP (Community Marketplace & Cart) -->
+    <section id="shop" class="py-20 bg-white border-t border-stone-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <div class="text-terracotta font-semibold text-xs sm:text-sm uppercase tracking-wider mb-2">
+                    ร้านค้าวิสาหกิจชุมชนไทยเบิ้งโคกสลุง (Community E-Commerce)
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-bold font-heading text-navanurakDark">
+                    อุดหนุนผลงานจาก 8 ฐานการเรียนรู้
+                </h2>
+                <div class="w-20 h-1 bg-ochreGold mx-auto mt-4 rounded-full"></div>
+                <p class="text-slate-600 mt-3 text-sm">
+                    ทุกการสั่งซื้อสร้างรายได้สู่ช่างฝีมือ ปราชญ์ชาวบ้าน และกลุ่มแม่บ้านในชุมชน 100%
+                </p>
+            </div>
+
+            <!-- Product Cards -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- Product 1 -->
+                <div class="bg-warmLinen rounded-2xl p-4 border border-stone-200 flex flex-col justify-between hover:shadow-lg transition">
+                    <div>
+                        <div class="relative h-48 rounded-xl overflow-hidden bg-stone-100 mb-3">
+                            <img src="https://www.navanurak.in.th/thaibuengkhoksalung/pic/thumbmuse/256306/Thumb_2020-10-29_10-21-56_%E0%B8%97%E0%B8%AD%E0%B8%9c%E0%B9%89%E0%B8%B2.jpg" alt="ผ้าขาวม้าทอมือไทยเบิ้ง" class="w-full h-full object-cover">
+                            <span class="absolute top-2 left-2 bg-ochreGold text-navanurakDark font-bold text-[10px] px-2 py-0.5 rounded">OTOP 4 ดาว</span>
+                        </div>
+                        <span class="text-[11px] text-terracotta font-bold">ฐานที่ 6: การทอผ้า</span>
+                        <h4 class="font-bold font-heading text-navanurakDark text-base mt-1">ผ้าขาวม้าทอมือลายโบราณ</h4>
+                        <p class="text-xs text-slate-500 mt-1">ทอจากฝ้ายธรรมชาติ เนื้อหนานุ่ม ทนทาน ไม่ระคายผิว</p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-stone-200 flex items-center justify-between">
+                        <div class="font-bold font-heading text-lg text-terracotta">฿450</div>
+                        <button onclick="addToCart(1, 'ผ้าขาวม้าทอมือลายโบราณ', 450, 'https://www.navanurak.in.th/thaibuengkhoksalung/pic/thumbmuse/256306/Thumb_2020-10-29_10-21-56_%E0%B8%97%E0%B8%AD%E0%B8%9c%E0%B9%89%E0%B8%B2.jpg')" class="bg-navanurakDark hover:bg-terracotta text-white px-3 py-1.5 rounded-lg text-xs font-medium flex items-center gap-1.5 transition">
+                            <i class="fa-solid fa-cart-plus"></i> สั่งซื้อ
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="bg-warmLinen rounded-2xl p-4 border border-stone-200 flex flex-col justify-between hover:shadow-lg transition">
+                    <div>
+                        <div class="relative h-48 rounded-xl overflow-hidden bg-stone-100 mb-3">
+                            <img src="https://www.navanurak.in.th/thaibuengkhoksalung/pic/thumbmuse/256301/Thumb_2020-10-29_09-31-26_%E0%B8%A1%E0%B8%B0%E0%B9%82%E0%B8%88%E0%B8%95%E0%B8%A32.jpg" alt="พวงมะโหตรมงคล" class="w-full h-full object-cover">
+                            <span class="absolute top-2 left-2 bg-terracotta text-white font-bold text-[10px] px-2 py-0.5 rounded">มงคลนำโชค</span>
+                        </div>
+                        <span class="text-[11px] text-terracotta font-bold">ฐานที่ 1: พวงมะโหตร</span>
+                        <h4 class="font-bold font-heading text-navanurakDark text-base mt-1">โมบายพวงมะโหตร 7 สี</h4>
+                        <p class="text-xs text-slate-500 mt-1">ฉลุลายประณีต สำหรับแขวนแต่งบ้าน งานมงคล และของฝาก</p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-stone-200 flex items-center justify-between">
+                        <div class="font-bold font-heading text-lg text-terracotta">฿150</div>
+                        <button onclick="addToCart(2, 'โมบายพวงมะโหตร 7 สี', 150, 'https://www.navanurak.in.th/thaibuengkhoksalung/pic/thumbmuse/256301/Thumb_2020-10-29_09-31-26_%E0%B8%A1%E0%B8%B0%E0%B9%82%E0%B8%88%E0%B8%95%E0%B8%A32.jpg')" class="bg-navanurakDark hover:bg-terracotta text-white px-3 py-1.5 rounded-lg text-xs font-medium flex items-center gap-1.5 transition">
+                            <i class="fa-solid fa-cart-plus"></i> สั่งซื้อ
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="bg-warmLinen rounded-2xl p-4 border border-stone-200 flex flex-col justify-between hover:shadow-lg transition">
+                    <div>
+                        <div class="relative h-48 rounded-xl overflow-hidden bg-stone-100 mb-3">
+                            <img src="https://www.navanurak.in.th/thaibuengkhoksalung/pic/thumbmuse/256302/Thumb_2020-10-29_09-38-54_prick4.jpg" alt="พริกตะเกลืออบแห้ง" class="w-full h-full object-cover">
+                            <span class="absolute top-2 left-2 bg-forestGreen text-white font-bold text-[10px] px-2 py-0.5 rounded">สูตรต้นตำรับ</span>
+                        </div>
+                        <span class="text-[11px] text-terracotta font-bold">ฐานที่ 2: พริกตะเกลือ</span>
+                        <h4 class="font-bold font-heading text-navanurakDark text-base mt-1">พริกตะเกลืออบแห้ง (กระปุก)</h4>
+                        <p class="text-xs text-slate-500 mt-1">ผสมสมุนไพรกำจัดหอมซ่า ทานคู่ผลไม้หรือโรยข้าวสวย</p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-stone-200 flex items-center justify-between">
+                        <div class="font-bold font-heading text-lg text-terracotta">฿85</div>
+                        <button onclick="addToCart(3, 'พริกตะเกลืออบแห้ง (กระปุก)', 85, 'https://www.navanurak.in.th/thaibuengkhoksalung/pic/thumbmuse/256302/Thumb_2020-10-29_09-38-54_prick4.jpg')" class="bg-navanurakDark hover:bg-terracotta text-white px-3 py-1.5 rounded-lg text-xs font-medium flex items-center gap-1.5 transition">
+                            <i class="fa-solid fa-cart-plus"></i> สั่งซื้อ
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="bg-warmLinen rounded-2xl p-4 border border-stone-200 flex flex-col justify-between hover:shadow-lg transition">
+                    <div>
+                        <div class="relative h-48 rounded-xl overflow-hidden bg-stone-100 mb-3">
+                            <img src="https://www.navanurak.in.th/thaibuengkhoksalung/pic/thumbmuse/256304/Thumb_2020-10-29_09-58-30_%E0%B8%82%E0%B8%99%E0%B8%A1%E0%B9%80%E0%B8%9a%E0%B8%B7%E0%B9%89%E0%B8%AD%E0%B8%871.jpg" alt="ชุดทำขนมเบื้องไทยเบิ้ง" class="w-full h-full object-cover">
+                            <span class="absolute top-2 left-2 bg-ochreGold text-navanurakDark font-bold text-[10px] px-2 py-0.5 rounded">ชุด DIY สนุก</span>
+                        </div>
+                        <span class="text-[11px] text-terracotta font-bold">ฐานที่ 4: ขนมเบื้อง</span>
+                        <h4 class="font-bold font-heading text-navanurakDark text-base mt-1">ชุดทำขนมเบื้องไทยเบิ้ง DIY</h4>
+                        <p class="text-xs text-slate-500 mt-1">แป้งโม่กึ่งสำเร็จรูปพร้อมไส้หวานและไส้เค็มสูตรโบราณ</p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-stone-200 flex items-center justify-between">
+                        <div class="font-bold font-heading text-lg text-terracotta">฿160</div>
+                        <button onclick="addToCart(4, 'ชุดทำขนมเบื้องไทยเบิ้ง DIY', 160, 'https://www.navanurak.in.th/thaibuengkhoksalung/pic/thumbmuse/256304/Thumb_2020-10-29_09-58-30_%E0%B8%82%E0%B8%99%E0%B8%A1%E0%B9%80%E0%B8%9a%E0%B8%B7%E0%B9%89%E0%B8%AD%E0%B8%871.jpg')" class="bg-navanurakDark hover:bg-terracotta text-white px-3 py-1.5 rounded-lg text-xs font-medium flex items-center gap-1.5 transition">
+                            <i class="fa-solid fa-cart-plus"></i> สั่งซื้อ
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Dialect of Thai Bueng (สำเนียงเบิ้ง เหว่ย ด๊อก เด้อ) -->
+    <section id="dialect" class="py-16 bg-gradient-to-r from-navanurakDark to-navanurakBlue text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <div class="lg:col-span-5 space-y-3">
+                    <span class="text-ochreGold font-bold text-xs uppercase tracking-wider">อัตลักษณ์ทางภาษาและสำเนียง</span>
+                    <h2 class="text-3xl font-bold font-heading">สำเนียงพูดชาวไทยเบิ้ง</h2>
+                    <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+                        ชาวไทยเบิ้งพูดภาษาไทยที่มีสำเนียงเหน่ออันไพเราะ และมีคำลงท้ายประโยคที่เป็นเอกลักษณ์ ได้แก่ 
+                        <strong>"เบิ้ง"</strong> (บ้าง), <strong>"เหว่ย"</strong> (เพื่อน/พวกเรา), <strong>"ด๊อก"</strong> (หรอก), และ <strong>"เด้อ"</strong>
+                    </p>
+                    <div class="pt-2 text-xs text-amber-200 flex items-center gap-2">
+                        <i class="fa-solid fa-volume-high"></i> คลิกที่การ์ดเพื่อทดลองฟังเสียงอ่านจำลอง
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div onclick="speakPhrase('กินข้าวเหวย', 'ชวนพวกเราไปกินข้าวกันเถอะ')" class="p-4 bg-white/10 hover:bg-white/20 rounded-xl border border-white/15 cursor-pointer transition flex justify-between items-center">
+                        <div>
+                            <div class="text-lg font-bold font-heading text-amber-300">"กินข้าวเหวย"</div>
+                            <div class="text-xs text-slate-300">ความหมาย: ชวนพวกเราไปกินข้าวกันเถิด</div>
+                        </div>
+                        <div class="w-8 h-8 rounded-full bg-ochreGold text-navanurakDark flex items-center justify-center text-xs"><i class="fa-solid fa-play"></i></div>
+                    </div>
+
+                    <div onclick="speakPhrase('ไปไหนมาเบิ้ง', 'ไปไหนมาบ้าง สบายดีไหม')" class="p-4 bg-white/10 hover:bg-white/20 rounded-xl border border-white/15 cursor-pointer transition flex justify-between items-center">
+                        <div>
+                            <div class="text-lg font-bold font-heading text-amber-300">"ไปไหนมาเบิ้ง"</div>
+                            <div class="text-xs text-slate-300">ความหมาย: ไปไหนมาบ้างนะ สบายดีไหม</div>
+                        </div>
+                        <div class="w-8 h-8 rounded-full bg-ochreGold text-navanurakDark flex items-center justify-center text-xs"><i class="fa-solid fa-play"></i></div>
+                    </div>
+
+                    <div onclick="speakPhrase('งามแท้ด๊อก', 'สวยงามจริงๆ เลยนะ')" class="p-4 bg-white/10 hover:bg-white/20 rounded-xl border border-white/15 cursor-pointer transition flex justify-between items-center">
+                        <div>
+                            <div class="text-lg font-bold font-heading text-amber-300">"งามแท้ด๊อก"</div>
+                            <div class="text-xs text-slate-300">ความหมาย: สวยงามจริงๆ ไม่ได้โกหกหรอก</div>
+                        </div>
+                        <div class="w-8 h-8 rounded-full bg-ochreGold text-navanurakDark flex items-center justify-center text-xs"><i class="fa-solid fa-play"></i></div>
+                    </div>
+
+                    <div onclick="speakPhrase('มาแอ่วโคกสลุงเด้อ', 'ยินดีต้อนรับสู่โคกสลุงนะ')" class="p-4 bg-white/10 hover:bg-white/20 rounded-xl border border-white/15 cursor-pointer transition flex justify-between items-center">
+                        <div>
+                            <div class="text-lg font-bold font-heading text-amber-300">"มาแอ่วโคกสลุงเด้อ"</div>
+                            <div class="text-xs text-slate-300">ความหมาย: มาเที่ยวเยี่ยมเยือนโคกสลุงกันนะ</div>
+                        </div>
+                        <div class="w-8 h-8 rounded-full bg-ochreGold text-navanurakDark flex items-center justify-center text-xs"><i class="fa-solid fa-play"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: ท่องเที่ยวชุมชน & จองเวิร์กช็อป (CBT Tourism Booking Engine) -->
+    <section id="tourism" class="py-20 bg-warmLinen border-t border-stone-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <div class="text-terracotta font-semibold text-xs sm:text-sm uppercase tracking-wider mb-2">
+                    โปรแกรมท่องเที่ยวชุมชน & โฮมสเตย์
+                </div>
+                <h2 class="text-3xl sm:text-4xl font-bold font-heading text-navanurakDark">
+                    สัมผัสวิถีชีวิตไทยเบิ้งด้วยตัวคุณเอง
+                </h2>
+                <div class="w-20 h-1 bg-ochreGold mx-auto mt-4 rounded-full"></div>
+                <p class="text-slate-600 mt-3 text-sm">
+                    รองรับทั้งนักท่องเที่ยวทั่วไป ครอบครัว และคณะศึกษาดูงานจากสถาบันการศึกษา
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Trip 1 -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-sm border border-stone-200 flex flex-col justify-between group hover:-translate-y-1 transition duration-300">
+                    <div class="relative h-52 overflow-hidden bg-slate-100">
+                        <img src="https://www.navanurak.in.th/thaibuengkhoksalung/pic/thumbmuse/256307/Thumb_2022-05-04_23-57-04_120_DJI_0084.jpg" alt="วันเดย์ทริป" class="w-full h-full object-cover img-zoom">
+                        <span class="absolute top-3 left-3 bg-navanurakDark text-white text-xs font-semibold px-3 py-1 rounded-full">1 วัน (ไป-กลับ)</span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold font-heading text-navanurakDark mb-2">วันเดย์ทริป: รถไฟลอยน้ำ & 8 ฐานเรียนรู้</h3>
+                            <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                                เยือนพิพิธภัณฑ์เรือนฝาค้อ, ถ่ายภาพสะพานรถไฟลอยน้ำ, เวิร์กช็อปตัดพวงมะโหตร, ทานมื้อกลางวันแกงนอกหม้อพื้นบ้าน
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-stone-100 flex items-center justify-between">
+                            <div>
+                                <span class="text-xs text-slate-400">ราคา</span>
+                                <div class="text-2xl font-bold font-heading text-terracotta">฿590 <span class="text-xs text-slate-500 font-normal">/ท่าน</span></div>
+                            </div>
+                            <button onclick="openBookingModal('วันเดย์ทริป: รถไฟลอยน้ำ & 8 ฐานเรียนรู้', 590)" class="bg-navanurakDark hover:bg-terracotta text-white px-4 py-2 rounded-xl text-xs font-medium transition">
+                                จองโปรแกรม
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Trip 2 -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-md border-2 border-ochreGold flex flex-col justify-between group hover:-translate-y-1 transition duration-300 relative">
+                    <span class="absolute top-0 right-0 bg-ochreGold text-navanurakDark text-[11px] font-bold px-3 py-1 rounded-bl-xl z-10">แนะนำ</span>
+                    <div class="relative h-52 overflow-hidden bg-slate-100">
+                        <img src="https://www.navanurak.in.th/thaibuengkhoksalung/pic/profile_upload/2021-10-13_11-46-50_%E0%B8%9E%E0%B8%B4%E0%B8%9E%E0%B8%B4%E0%B8%98%E0%B8%A0%E0%B8%B1%E0%B8%93%E0%B8%91%E0%B9%8C%E0%B9%80%E0%B8%A3%E0%B8%B7%E0%B8%AD%E0%B8%99%E0%B8%9d%E0%B8%B2%E0%B8%84%E0%B9%89%E0%B8%AD%E0%B9%84%E0%B8%97%E0%B8%A2%E0%B9%80%E0%B8%9a%E0%B8%B4%E0%B9%89%E0%B8%87.JPG" alt="โฮมสเตย์" class="w-full h-full object-cover img-zoom">
+                        <span class="absolute bottom-3 right-3 bg-white/95 text-slate-800 text-xs font-bold px-3 py-1 rounded-lg">2 วัน 1 คืน</span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold font-heading text-navanurakDark mb-2">โฮมสเตย์เรือนไม้ & กิจกรรมวัฒนธรรม</h3>
+                            <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                                นอนพักเรือนไทยเบิ้งดั้งเดิม, บายศรีสู่ขวัญต้อนรับ, ตักบาตรยามเช้า, เวิร์กช็อปทอผ้าและทำขนมเบื้องโบราณ
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-stone-100 flex items-center justify-between">
+                            <div>
+                                <span class="text-xs text-slate-400">ราคา</span>
+                                <div class="text-2xl font-bold font-heading text-terracotta">฿1,200 <span class="text-xs text-slate-500 font-normal">/ท่าน</span></div>
+                            </div>
+                            <button onclick="openBookingModal('โฮมสเตย์เรือนไม้ & กิจกรรมวัฒนธรรม (2 วัน 1 คืน)', 1200)" class="bg-terracotta hover:bg-terracottaDark text-white px-4 py-2 rounded-xl text-xs font-medium transition">
+                                จองที่พัก
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Trip 3 -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-sm border border-stone-200 flex flex-col justify-between group hover:-translate-y-1 transition duration-300">
+                    <div class="relative h-52 overflow-hidden bg-slate-100">
+                        <img src="https://www.navanurak.in.th/thaibuengkhoksalung/pic/thumbmuse/256301/Thumb_2020-10-29_09-31-26_%E0%B8%A1%E0%B8%B0%E0%B9%82%E0%B8%88%E0%B8%95%E0%B8%A32.jpg" alt="เวิร์กช็อป" class="w-full h-full object-cover img-zoom">
+                        <span class="absolute top-3 left-3 bg-forestGreen text-white text-xs font-semibold px-3 py-1 rounded-full">เวิร์กช็อป 2-3 ชม.</span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold font-heading text-navanurakDark mb-2">เวิร์กช็อปพวงมะโหตร & ขนมเบื้อง</h3>
+                            <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                                เรียนรู้การตัดพวงมะโหตรมงคลกับปราชญ์ชุมชน และลงมือละเลงขนมเบื้องไทยเบิ้งบนเตาถ่านโบราณ ทานร้อนๆ ทันที
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-stone-100 flex items-center justify-between">
+                            <div>
+                                <span class="text-xs text-slate-400">ราคา</span>
+                                <div class="text-2xl font-bold font-heading text-terracotta">฿250 <span class="text-xs text-slate-500 font-normal">/ท่าน</span></div>
+                            </div>
+                            <button onclick="openBookingModal('เวิร์กช็อปพวงมะโหตร & ขนมเบื้อง (2-3 ชม.)', 250)" class="bg-navanurakDark hover:bg-terracotta text-white px-4 py-2 rounded-xl text-xs font-medium transition">
+                                จองเวิร์กช็อป
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 6: ข้อมูลติดต่อและการเดินทาง (Directly from Navanurak contact.php) -->
+    <section id="contact" class="py-20 bg-white border-t border-stone-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                
+                <!-- Left: Official Contact Data from contact.php -->
+                <div class="lg:col-span-6 space-y-6">
+                    <div>
+                        <div class="text-terracotta font-semibold text-xs sm:text-sm uppercase tracking-wider mb-1">
+                            ข้อมูลติดต่อจากคลังนวนุรักษ์ (Contact Information)
+                        </div>
+                        <h2 class="text-3xl font-bold font-heading text-navanurakDark">
+                            ติดต่อพิพิธภัณฑ์พื้นบ้านไทยเบิ้ง
+                        </h2>
+                        <p class="text-slate-600 text-sm mt-2">
+                            ยินดีต้อนรับนักท่องเที่ยว คณะศึกษาดูงาน หน่วยงาน และสถาบันการศึกษาทุกท่าน
+                        </p>
+                    </div>
+
+                    <!-- Contact Details Card -->
+                    <div class="bg-warmLinen p-6 rounded-2xl border border-stone-200 space-y-4 text-sm">
+                        
+                        <!-- Address -->
+                        <div class="flex items-start space-x-3">
+                            <div class="w-10 h-10 rounded-xl bg-terracotta/10 text-terracotta flex items-center justify-center shrink-0 mt-0.5">
+                                <i class="fa-solid fa-location-dot text-lg"></i>
+                            </div>
+                            <div>
+                                <div class="font-bold text-navanurakDark font-heading">ที่ตั้งพิพิธภัณฑ์</div>
+                                <div class="text-slate-600 text-xs mt-0.5 leading-relaxed">
+                                    เลขที่ 99/3 หมู่ 3 ตำบลโคกสลุง อำเภอพัฒนานิคม จังหวัดลพบุรี 15140 <br>
+                                    <span class="text-terracotta font-medium">(จุดสังเกต: ตั้งอยู่ตรงข้ามโรงเรียนโคกสลุง)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Phone & Leader -->
+                        <div class="flex items-start space-x-3 pt-3 border-t border-stone-200/80">
+                            <div class="w-10 h-10 rounded-xl bg-forestGreen/10 text-forestGreen flex items-center justify-center shrink-0 mt-0.5">
+                                <i class="fa-solid fa-phone text-lg"></i>
+                            </div>
+                            <div>
+                                <div class="font-bold text-navanurakDark font-heading">เบอร์โทรศัพท์ติดต่อ / ผู้ประสานงาน</div>
+                                <div class="text-slate-600 text-xs mt-0.5 space-y-1">
+                                    <div><strong>นายประทีป อ่อนสลุง</strong> (ประธานศูนย์ฯ / ผู้แทนชุมชน): <a href="tel:0849786782" class="text-terracotta font-bold text-sm">084-978-6782</a></div>
+                                    <div>นางพะยอม อ่อนสลุง: <span class="font-bold">087-765-5780</span></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Online Channels from contact.php -->
+                        <div class="flex items-start space-x-3 pt-3 border-t border-stone-200/80">
+                            <div class="w-10 h-10 rounded-xl bg-navanurakBlue/10 text-navanurakBlue flex items-center justify-center shrink-0 mt-0.5">
+                                <i class="fa-solid fa-globe text-lg"></i>
+                            </div>
+                            <div>
+                                <div class="font-bold text-navanurakDark font-heading">ช่องทางออนไลน์และโซเชียลมีเดีย</div>
+                                <div class="text-xs text-slate-600 mt-1 space-y-1">
+                                    <div><i class="fa-brands fa-facebook text-blue-600 mr-1.5"></i> Facebook: <a href="https://www.facebook.com/thaibuengkhoksalung" target="_blank" class="text-blue-600 hover:underline font-medium">facebook.com/thaibuengkhoksalung</a></div>
+                                    <div><i class="fa-brands fa-youtube text-red-600 mr-1.5"></i> YouTube: <span class="text-slate-700 font-medium">Thai-Bueng Khoksalung</span></div>
+                                    <div><i class="fa-solid fa-link text-slate-500 mr-1.5"></i> Website เดิม: <a href="https://thaibuengkhoksalung.com/" target="_blank" class="text-slate-700 hover:underline">thaibuengkhoksalung.com</a></div>
+                                    <div><i class="fa-solid fa-server text-ochreGold mr-1.5"></i> คลังนวนุรักษ์: <a href="https://www.navanurak.in.th/thaibuengkhoksalung/" target="_blank" class="text-ochreGold hover:underline font-medium">navanurak.in.th/thaibuengkhoksalung</a></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Coordinates -->
+                        <div class="pt-3 border-t border-stone-200/80 flex items-center justify-between text-xs">
+                            <span class="text-slate-500">พิกัด GPS: <strong>14.9925, 100.915</strong></span>
+                            <a href="https://maps.google.com/?q=14.9925,100.915" target="_blank" class="bg-terracotta hover:bg-terracottaDark text-white px-3 py-1.5 rounded-lg font-semibold transition">
+                                <i class="fa-solid fa-diamond-turn-right mr-1"></i> นำทาง Google Maps
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Research & Platform Credit Box -->
+                    <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 text-xs text-slate-500 space-y-1">
+                        <div class="font-bold text-slate-700 flex items-center gap-1.5">
+                            <i class="fa-solid fa-circle-info text-ochreGold"></i> การสนับสนุนและลิขสิทธิ์
+                        </div>
+                        <p>แพลตฟอร์มบริหารจัดการความหลากหลายทางวัฒนธรรมและความหลากหลายทางชีวภาพ "นวนุรักษ์" พัฒนาโดย <strong>ศูนย์เทคโนโลยีอิเล็กทรอนิกส์และคอมพิวเตอร์แห่งชาติ (เนคเทค สวทช.)</strong> ได้รับทุนวิจัยจาก <strong>หน่วยบริหารและจัดการทุนด้านการเพิ่มความสามารถในการแข่งขันของประเทศ (บพข.)</strong></p>
+                        <p class="text-[11px] text-slate-400">สัญญาอนุญาต: Creative Commons CC BY-NC-SA (อนุญาตให้เผยแพร่/ดัดแปลงเพื่อการศึกษา ไม่ใช้เพื่อการค้า)</p>
+                    </div>
+                </div>
+
+                <!-- Right: Contact Form for Study Groups & General Visits -->
+                <div class="lg:col-span-6 bg-warmLinen p-6 sm:p-8 rounded-3xl border border-stone-200 shadow-sm relative">
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="text-xl font-bold font-heading text-navanurakDark">ส่งข้อความติดต่อ / นัดหมายศึกษาดูงาน</h3>
+                        <span class="text-[10px] bg-emerald-100 text-emerald-800 font-semibold px-2.5 py-1 rounded-full flex items-center gap-1">
+                            <i class="fa-solid fa-cloud-arrow-up text-xs"></i> บันทึกลงหลังบ้านทันที
+                        </span>
+                    </div>
+                    <p class="text-xs text-slate-500 mb-6">กรอกข้อมูลเพื่อให้เจ้าหน้าที่ชุมชนและวิทยากรติดต่อกลับเพื่อประสานงานกำหนดการ</p>
+
+                    <form onsubmit="handleContactSubmit(event)" id="contactForm" class="space-y-4 text-xs">
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1">ชื่อผู้ติดต่อ / หน่วยงาน / มหาวิทยาลัย <span class="text-red-500">*</span></label>
+                            <input type="text" id="contactName" required placeholder="เช่น อาจารย์ตุ๊ก คณะวิทยาการจัดการ" class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-terracotta">
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block font-semibold text-slate-700 mb-1">เบอร์โทรศัพท์ <span class="text-red-500">*</span></label>
+                                <input type="tel" id="contactPhone" required placeholder="08x-xxx-xxxx" class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-terracotta">
+                            </div>
+                            <div>
+                                <label class="block font-semibold text-slate-700 mb-1">อีเมล หรือ LINE ID</label>
+                                <input type="text" id="contactOnline" placeholder="line-id หรือ email" class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-terracotta">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1">วัตถุประสงค์ในการติดต่อ</label>
+                            <select id="contactPurpose" class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-terracotta">
+                                <option value="นำนักศึกษา / คณะศึกษาดูงานเยี่ยมชมชุมชน">นำนักศึกษา / คณะศึกษาดูงานเยี่ยมชมชุมชน</option>
+                                <option value="จองที่พักโฮมสเตย์และโปรแกรมท่องเที่ยว">จองที่พักโฮมสเตย์และโปรแกรมท่องเที่ยว</option>
+                                <option value="สั่งซื้อผลิตภัณฑ์ชุมชนและงานหัตถกรรมจำนวนมาก">สั่งซื้อผลิตภัณฑ์ชุมชนและงานหัตถกรรมจำนวนมาก</option>
+                                <option value="ประสานงานวิจัยและงานวัฒนธรรม">ประสานงานวิจัยและงานวัฒนธรรม</option>
+                                <option value="สอบถามข้อมูลทั่วไป">สอบถามข้อมูลทั่วไป</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block font-semibold text-slate-700 mb-1">ข้อความรายละเอียดเพิ่มเติม</label>
+                            <textarea id="contactMessage" rows="3" placeholder="ระบุจำนวนคน วันที่คาดว่าจะเดินทาง หรือหัวข้อที่สนใจเป็นพิเศษ..." class="w-full px-3.5 py-2 rounded-xl border border-stone-300 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-terracotta"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full bg-navanurakDark hover:bg-terracotta text-white py-3 rounded-xl font-heading font-semibold text-sm shadow transition flex items-center justify-center gap-2">
+                            <i class="fa-regular fa-paper-plane"></i>
+                            <span>ส่งข้อความถึงชุมชน</span>
+                        </button>
+                    </form>
+
+                    <div class="mt-4 p-3 bg-cardLinen rounded-xl flex items-center justify-between text-xs border border-stone-200">
+                        <span class="text-slate-600"><i class="fa-solid fa-lock text-slate-400 mr-1"></i> ผู้ดูแลระบบตรวจดูข้อความที่ส่งเข้ามาได้ที่:</span>
+                        <button onclick="toggleAdminModal('inbox')" class="text-terracotta hover:underline font-bold">
+                            เปิดกล่องข้อความหลังบ้าน <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-navanurakDark text-slate-300 pt-16 pb-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-slate-800">
+                
+                <!-- Col 1: Brand & Identity -->
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-terracotta to-ochreGold flex items-center justify-center text-white">
+                            <i class="fa-solid fa-landmark text-lg"></i>
+                        </div>
+                        <div class="text-lg font-bold font-heading text-white">
+                            ไทยเบิ้ง<span class="text-terracotta">โคกสลุง</span>
+                        </div>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        พิพิธภัณฑ์พื้นบ้านไทยเบิ้ง บ้านโคกสลุง อ.พัฒนานิคม จ.ลพบุรี บันทึกบนคลังข้อมูลวัฒนธรรมดิจิทัล "นวนุรักษ์" เพื่อการศึกษา อนุรักษ์ และพัฒนาเศรษฐกิจฐานรากอย่างยั่งยืน
+                    </p>
+                    <div class="flex space-x-3 pt-2">
+                        <a href="https://www.facebook.com/thaibuengkhoksalung" target="_blank" class="w-8 h-8 rounded-full bg-white/10 hover:bg-blue-600 flex items-center justify-center text-white text-xs transition"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="https://www.youtube.com/@thaibuengkhoksalung" target="_blank" class="w-8 h-8 rounded-full bg-white/10 hover:bg-red-600 flex items-center justify-center text-white text-xs transition"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="https://www.navanurak.in.th/thaibuengkhoksalung/" target="_blank" class="w-8 h-8 rounded-full bg-white/10 hover:bg-ochreGold flex items-center justify-center text-white text-xs transition"><i class="fa-solid fa-database"></i></a>
+                    </div>
+                </div>
+
+                <!-- Col 2: 8 Bases Fast Nav -->
+                <div>
+                    <h4 class="text-sm font-bold font-heading text-white uppercase tracking-wider mb-4">8 ฐานการเรียนรู้</h4>
+                    <ul class="space-y-1.5 text-xs">
+                        <li><a href="#bases" class="hover:text-amber-300 transition">1. พวงมะโหตร</a></li>
+                        <li><a href="#bases" class="hover:text-amber-300 transition">2. พริกตะเกลือ</a></li>
+                        <li><a href="#bases" class="hover:text-amber-300 transition">3. ของเล่นจากใบลาน</a></li>
+                        <li><a href="#bases" class="hover:text-amber-300 transition">4. ขนมเบื้องไทยเบิ้ง</a></li>
+                        <li><a href="#bases" class="hover:text-amber-300 transition">5. การทอเสื่อกก</a></li>
+                        <li><a href="#bases" class="hover:text-amber-300 transition">6. การทอผ้าพื้นบ้าน</a></li>
+                        <li><a href="#bases" class="hover:text-amber-300 transition">7. รถไฟลอยน้ำโคกสลุง</a></li>
+                        <li><a href="#bases" class="hover:text-amber-300 transition">8. วัดโคกสำราญ</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Academic Credits -->
+                <div>
+                    <h4 class="text-sm font-bold font-heading text-white uppercase tracking-wider mb-4">สำหรับอาจารย์และนักศึกษา</h4>
+                    <div class="text-xs space-y-2 text-slate-400">
+                        <p><strong class="text-slate-200">รายวิชา:</strong> บธ 3012301 การออกแบบและบริหารจัดการเว็บไซต์</p>
+                        <p><strong class="text-slate-200">สาขา:</strong> คอมพิวเตอร์ธุรกิจ</p>
+                        <p><strong class="text-slate-200">คณะ:</strong> วิทยาการจัดการ</p>
+                        <p class="text-[11px] text-ochreGold mt-3">
+                            * ต้นแบบนี้แสดงการบูรณาการระบบฐานข้อมูลจริง (API/CMS Integration), ระบบ E-Commerce, การจองกิจกรรม, การจัดการเนื้อหาวิถีชุมชน และการวัดผลหลังบ้าน
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Col 4: Platform & License Credits -->
+                <div>
+                    <h4 class="text-sm font-bold font-heading text-white uppercase tracking-wider mb-4">พันธมิตรและลิขสิทธิ์</h4>
+                    <div class="text-xs space-y-2 text-slate-400">
+                        <p><strong class="text-slate-200">แพลตฟอร์ม:</strong> นวนุรักษ์ (NAVANURAK)</p>
+                        <p><strong class="text-slate-200">พัฒนาโดย:</strong> ศูนย์เทคโนโลยีอิเล็กทรอนิกส์และคอมพิวเตอร์แห่งชาติ (เนคเทค สวทช.)</p>
+                        <p><strong class="text-slate-200">ทุนวิจัย:</strong> หน่วยบริหารและจัดการทุนด้านการเพิ่มความสามารถในการแข่งขันของประเทศ (บพข.)</p>
+                        <div class="pt-2">
+                            <span class="inline-block bg-white/10 px-2 py-1 rounded text-[10px] text-slate-300">
+                                License: CC BY-NC-SA 4.0
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Bottom Line -->
+            <div class="pt-8 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500 gap-4">
+                <div>
+                    &copy; 2026 พิพิธภัณฑ์พื้นบ้านไทยเบิ้ง บ้านโคกสลุง จ.ลพบุรี &middot; สงวนลิขสิทธิ์
+                </div>
+                <div class="flex space-x-6">
+                    <button onclick="toggleAdminModal()" class="text-slate-400 hover:text-white transition">
+                        <i class="fa-solid fa-lock mr-1"></i> แดชบอร์ดบริหารจัดการ (Admin)
+                    </button>
+                    <a href="#hero" class="text-slate-400 hover:text-white transition">กลับขึ้นด้านบน <i class="fa-solid fa-arrow-up ml-1"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==================== MODALS & DRAWERS ==================== -->
+
+    <!-- 1. Cart Slide-Over Drawer -->
+    <div id="cartDrawer" class="fixed inset-0 z-50 overflow-hidden hidden" role="dialog" aria-modal="true">
+        <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" onclick="toggleCartDrawer()"></div>
+        <div class="fixed inset-y-0 right-0 pl-10 max-w-full flex">
+            <div class="w-screen max-w-md bg-white shadow-2xl flex flex-col">
+                <div class="p-6 bg-navanurakDark text-white flex items-center justify-between">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-bag-shopping text-ochreGold text-lg"></i>
+                        <h3 class="font-bold font-heading text-lg">ตะกร้าสินค้าวิสาหกิจชุมชน</h3>
+                    </div>
+                    <button onclick="toggleCartDrawer()" class="text-slate-300 hover:text-white">
+                        <i class="fa-solid fa-xmark text-xl"></i>
+                    </button>
+                </div>
+
+                <div id="cartItemsContainer" class="flex-1 overflow-y-auto p-6 space-y-4">
+                    <div id="emptyCartMsg" class="text-center py-12 text-slate-400">
+                        <i class="fa-solid fa-basket-shopping text-5xl mb-3 text-slate-300"></i>
+                        <p class="text-sm font-medium">ยังไม่มีสินค้าในตะกร้าของคุณ</p>
+                        <p class="text-xs text-slate-400 mt-1">เลือกสินค้า OTOP เพื่อร่วมสนับสนุนชุมชนได้เลยค่ะ</p>
+                    </div>
+                </div>
+
+                <div id="cartFooter" class="p-6 bg-warmLinen border-t border-stone-200 space-y-3">
+                    <div class="flex justify-between text-xs text-slate-600">
+                        <span>ยอดรวมสินค้า</span>
+                        <span id="cartSubtotal" class="font-semibold text-slate-800">฿0</span>
+                    </div>
+                    <div class="flex justify-between text-xs text-slate-600">
+                        <span>ค่าจัดส่งพัสดุ</span>
+                        <span id="shippingFee" class="font-semibold text-slate-800">฿50</span>
+                    </div>
+                    <div class="flex justify-between text-base font-bold text-navanurakDark pt-2 border-t border-stone-200">
+                        <span>ยอดสุทธิที่ต้องชำระ</span>
+                        <span id="cartTotal" class="text-terracotta text-xl">฿0</span>
+                    </div>
+
+                    <button onclick="proceedToCheckout()" id="btnCheckout" class="w-full bg-terracotta hover:bg-terracottaDark text-white py-3 rounded-xl font-heading font-semibold text-sm shadow transition disabled:opacity-50" disabled>
+                        ดำเนินการสั่งซื้อ (Checkout)
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. Base Detail Modal (สำหรับดูวิธีทำและรายละเอียดของ 8 ฐาน) -->
+    <div id="baseModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 hidden">
+        <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" onclick="closeBaseModal()"></div>
+        <div class="relative bg-white rounded-3xl max-w-lg w-full p-6 shadow-2xl border border-stone-200 overflow-hidden max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-start mb-3">
+                <h3 id="modalBaseTitle" class="text-lg font-bold font-heading text-navanurakDark">รายละเอียดฐานการเรียนรู้</h3>
+                <button onclick="closeBaseModal()" class="text-slate-400 hover:text-slate-700">
+                    <i class="fa-solid fa-xmark text-xl"></i>
+                </button>
+            </div>
+            <div class="h-56 rounded-2xl overflow-hidden bg-stone-100 mb-4">
+                <img id="modalBaseImg" src="" class="w-full h-full object-cover">
+            </div>
+            <p id="modalBaseDesc" class="text-xs text-slate-600 leading-relaxed"></p>
+            <div class="mt-6 pt-4 border-t border-stone-200 flex justify-between items-center">
+                <span id="modalBasePrice" class="text-sm font-bold text-terracotta"></span>
+                <button onclick="closeBaseModal()" class="bg-navanurakDark hover:bg-slate-700 text-white px-4 py-2 rounded-xl text-xs font-semibold">
+                    ปิดหน้าต่าง
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. Tour & Workshop Booking Modal -->
+    <div id="bookingModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 hidden">
+        <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" onclick="closeBookingModal()"></div>
+        <div class="relative bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl border border-stone-200 overflow-hidden max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-start mb-4">
+                <div>
+                    <span class="text-xs font-bold text-terracotta uppercase">แบบฟอร์มจองท่องเที่ยว & กิจกรรม</span>
+                    <h3 id="bookingPackageTitle" class="text-xl font-bold font-heading text-navanurakDark mt-0.5">จองโปรแกรม</h3>
+                </div>
+                <button onclick="closeBookingModal()" class="text-slate-400 hover:text-slate-700">
+                    <i class="fa-solid fa-xmark text-xl"></i>
+                </button>
+            </div>
+
+            <form onsubmit="submitBooking(event)" class="space-y-4 mt-4 text-xs">
+                <div>
+                    <label class="block font-semibold text-slate-700 mb-1">ชื่อ-นามสกุล / คณะศึกษาดูงาน</label>
+                    <input type="text" required placeholder="เช่น อ.สมชาย หรือ คณะศึกษาดูงาน มรภ." class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 text-sm focus:outline-none focus:ring-2 focus:ring-terracotta">
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block font-semibold text-slate-700 mb-1">เบอร์โทรศัพท์</label>
+                        <input type="tel" required placeholder="08x-xxx-xxxx" class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 text-sm focus:outline-none focus:ring-2 focus:ring-terracotta">
+                    </div>
+                    <div>
+                        <label class="block font-semibold text-slate-700 mb-1">LINE ID</label>
+                        <input type="text" placeholder="line-id" class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 text-sm focus:outline-none focus:ring-2 focus:ring-terracotta">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block font-semibold text-slate-700 mb-1">วันที่ต้องการเดินทาง</label>
+                        <input type="date" required id="bookingDateInput" class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 text-sm focus:outline-none focus:ring-2 focus:ring-terracotta">
+                    </div>
+                    <div>
+                        <label class="block font-semibold text-slate-700 mb-1">จำนวนผู้เดินทาง (ท่าน)</label>
+                        <input type="number" min="1" max="150" value="2" id="bookingPersonCount" oninput="calculateBookingTotal()" class="w-full px-3.5 py-2.5 rounded-xl border border-stone-300 text-sm focus:outline-none focus:ring-2 focus:ring-terracotta">
+                    </div>
+                </div>
+
+                <div class="p-4 bg-warmLinen rounded-xl border border-stone-200 space-y-1">
+                    <div class="flex justify-between text-xs text-slate-600">
+                        <span>ราคาต่อท่าน:</span>
+                        <span id="bookingPricePerPerson" class="font-semibold text-slate-800">฿0</span>
+                    </div>
+                    <div class="flex justify-between text-base font-bold text-navanurakDark pt-1 border-t border-stone-200">
+                        <span>ประมาณการยอดรวม:</span>
+                        <span id="bookingTotalEstimated" class="text-terracotta text-lg font-heading">฿0</span>
+                    </div>
+                </div>
+
+                <button type="submit" class="w-full bg-navanurakDark hover:bg-terracotta text-white py-3 rounded-xl font-heading font-semibold text-sm shadow transition">
+                    ยืนยันการจองทริป
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- 4. Admin Preview Modal (Academic Showcase & Live Backend Inbox) -->
+    <div id="adminModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 hidden">
+        <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" onclick="toggleAdminModal()"></div>
+        <div class="relative bg-white rounded-3xl max-w-5xl w-full p-6 sm:p-8 shadow-2xl border border-stone-200 overflow-hidden max-h-[92vh] flex flex-col">
+            
+            <!-- Modal Header -->
+            <div class="flex justify-between items-center pb-4 border-b border-stone-200 shrink-0">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-xl bg-navanurakDark text-white flex items-center justify-center">
+                        <i class="fa-solid fa-gauge-high"></i>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <h3 class="font-bold font-heading text-lg text-navanurakDark">ระบบจัดการข้อมูลหลังบ้าน (Admin Management Portal)</h3>
+                            <span class="bg-amber-100 text-amber-800 text-[10px] font-bold px-2 py-0.5 rounded-full">บธ 3012301</span>
+                        </div>
+                        <p class="text-xs text-slate-500">จำลองระบบหลังบ้านสำหรับนักศึกษา: ตรวจสอบข้อความติดต่อ, รายการจองดูงาน และยอดขายสินค้าชุมชน</p>
+                    </div>
+                </div>
+                <button onclick="toggleAdminModal()" class="text-slate-400 hover:text-slate-700">
+                    <i class="fa-solid fa-xmark text-xl"></i>
+                </button>
+            </div>
+
+            <!-- Tab Navigation Bar -->
+            <div class="flex border-b border-stone-200 my-4 text-xs font-semibold gap-2 shrink-0">
+                <button onclick="switchAdminTab('inbox')" id="tabBtn-inbox" class="admin-tab-btn pb-3 px-3 text-terracotta border-b-2 border-terracotta flex items-center gap-1.5 transition">
+                    <i class="fa-solid fa-inbox"></i>
+                    <span>กล่องข้อความติดต่อ & นัดหมายดูงาน</span>
+                    <span id="inboxCountBadge" class="ml-1 bg-terracotta text-white text-[10px] font-bold px-2 py-0.2 rounded-full">0</span>
+                </button>
+                <button onclick="switchAdminTab('metrics')" id="tabBtn-metrics" class="admin-tab-btn pb-3 px-3 text-slate-500 hover:text-slate-800 flex items-center gap-1.5 transition">
+                    <i class="fa-solid fa-chart-pie"></i>
+                    <span>ภาพรวมสถิติ & รายได้ (Analytics)</span>
+                </button>
+                <button onclick="switchAdminTab('bookings')" id="tabBtn-bookings" class="admin-tab-btn pb-3 px-3 text-slate-500 hover:text-slate-800 flex items-center gap-1.5 transition">
+                    <i class="fa-solid fa-calendar-check"></i>
+                    <span>รายการจองทริป & โฮมสเตย์</span>
+                </button>
+                <button onclick="switchAdminTab('orders')" id="tabBtn-orders" class="admin-tab-btn pb-3 px-3 text-slate-500 hover:text-slate-800 flex items-center gap-1.5 transition">
+                    <i class="fa-solid fa-boxes-packing"></i>
+                    <span>รายการคำสั่งซื้อสินค้า OTOP</span>
+                </button>
+            </div>
+
+            <!-- Tab Content Container (Scrollable) -->
+            <div class="flex-1 overflow-y-auto pr-1">
+                
+                <!-- TAB 1: Live Inbox (ข้อความติดต่อจากฟอร์มหน้าเว็บ & Google Sheets) -->
+                <div id="tabContent-inbox" class="space-y-4">
+                    <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-2 p-3 bg-warmLinen rounded-xl border border-stone-200 text-xs">
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <span class="font-bold text-navanurakDark"><i class="fa-solid fa-bell text-ochreGold mr-1"></i> กล่องรับข้อมูลติดต่อแบบ Real-time:</span>
+                                <span id="sheetStatusBadge" class="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1">
+                                    <i class="fa-solid fa-table"></i> รองรับ Google Sheets
+                                </span>
+                            </div>
+                            <span class="text-slate-500 text-[11px]">ข้อมูลจากฟอร์มจะบันทึกลงตาราง Google Sheets ออนไลน์อัตโนมัติ และแสดงในตารางนี้</span>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <button onclick="setGoogleSheetURL()" class="bg-emerald-700 hover:bg-emerald-800 text-white px-3 py-1.5 rounded-lg font-medium transition flex items-center gap-1">
+                                <i class="fa-solid fa-link"></i> ตั้งค่า Google Sheets Webhook
+                            </button>
+                            <button onclick="exportContactsCSV()" class="bg-forestGreen hover:bg-emerald-800 text-white px-3 py-1.5 rounded-lg font-medium transition flex items-center gap-1">
+                                <i class="fa-solid fa-file-excel"></i> ส่งออก Excel (CSV)
+                            </button>
+                            <button onclick="clearAllContacts()" class="bg-stone-200 hover:bg-stone-300 text-slate-700 px-3 py-1.5 rounded-lg font-medium transition">
+                                ล้างข้อมูลจำลอง
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Dynamic Table of Messages -->
+                    <div class="overflow-x-auto border border-stone-200 rounded-xl">
+                        <table class="w-full text-left text-xs text-slate-600">
+                            <thead class="bg-stone-100 text-slate-700 font-semibold border-b border-stone-200">
+                                <tr>
+                                    <th class="p-3">วัน/เวลา</th>
+                                    <th class="p-3">ชื่อผู้ติดต่อ / หน่วยงาน</th>
+                                    <th class="p-3">เบอร์โทรศัพท์ / LINE</th>
+                                    <th class="p-3">วัตถุประสงค์</th>
+                                    <th class="p-3">ข้อความรายละเอียด</th>
+                                    <th class="p-3">สถานะ</th>
+                                    <th class="p-3 text-center">จัดการ</th>
+                                </tr>
+                            </thead>
+                            <tbody id="inboxTableBody" class="divide-y divide-stone-100">
+                                <!-- Populated dynamically by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- TAB 2: Metrics & Analytics -->
+                <div id="tabContent-metrics" class="space-y-4 hidden">
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                        <div class="bg-cardLinen p-4 rounded-2xl border border-amber-900/10">
+                            <div class="text-[11px] text-slate-500 font-medium">ยอดสั่งซื้อสินค้าชุมชนเดือนนี้</div>
+                            <div class="text-2xl font-bold font-heading text-terracotta mt-1">฿34,800</div>
+                            <div class="text-[10px] text-emerald-600 mt-1"><i class="fa-solid fa-arrow-up"></i> +18% จากเดือนก่อน</div>
+                        </div>
+                        <div class="bg-cardLinen p-4 rounded-2xl border border-amber-900/10">
+                            <div class="text-[11px] text-slate-500 font-medium">การจองดูงาน & โฮมสเตย์</div>
+                            <div class="text-2xl font-bold font-heading text-navanurakDark mt-1">24 คณะ</div>
+                            <div class="text-[10px] text-emerald-600 mt-1">182 ท่านในเดือนนี้</div>
+                        </div>
+                        <div class="bg-cardLinen p-4 rounded-2xl border border-amber-900/10">
+                            <div class="text-[11px] text-slate-500 font-medium">ผู้เข้าชมคลังดิจิทัล (Unique)</div>
+                            <div class="text-2xl font-bold font-heading text-forestGreen mt-1">4,280</div>
+                            <div class="text-[10px] text-slate-500 mt-1">นวนุรักษ์ API เชื่อมต่อปกติ</div>
+                        </div>
+                        <div class="bg-cardLinen p-4 rounded-2xl border border-amber-900/10">
+                            <div class="text-[11px] text-slate-500 font-medium">ความพึงพอใจนักท่องเที่ยว</div>
+                            <div class="text-2xl font-bold font-heading text-ochreGold mt-1">4.9 / 5.0</div>
+                            <div class="text-[10px] text-slate-500 mt-1">ประเมินจาก 95 รีวิว</div>
+                        </div>
+                    </div>
+
+                    <div class="p-4 bg-slate-50 rounded-2xl border border-stone-200 text-xs text-slate-600 space-y-2">
+                        <div class="font-bold text-navanurakDark text-sm">การเชื่อมต่อทางเทคโนโลยีสำหรับสอนนักศึกษา:</div>
+                        <p>1. <strong>E-Commerce & Orders:</strong> เมื่อลูกค้ากด Checkout ในหน้าเว็บ ข้อมูลจะถูกแปลงเป็น Order Record พร้อมรายการสินค้าและยอดรวม</p>
+                        <p>2. <strong>Cultural Database API:</strong> วัตถุจัดแสดงและฐานการเรียนรู้เชื่อมต่อมาตรฐานเดียวกับแพลตฟอร์มนวนุรักษ์ (สวทช.)</p>
+                        <p>3. <strong>Lead & Contact Management:</strong> ข้อมูลติดต่อจากหน้าบ้านถูกนำเข้าสู่ระบบจัดการลูกค้าสัมพันธ์ (CRM) ของชุมชน</p>
+                    </div>
+                </div>
+
+                <!-- TAB 3: Bookings -->
+                <div id="tabContent-bookings" class="space-y-4 hidden">
+                    <div class="overflow-x-auto border border-stone-200 rounded-xl">
+                        <table class="w-full text-left text-xs text-slate-600">
+                            <thead class="bg-stone-100 text-slate-700 font-semibold border-b border-stone-200">
+                                <tr>
+                                    <th class="p-3">รหัสจอง</th>
+                                    <th class="p-3">ชื่อผู้จอง / คณะ</th>
+                                    <th class="p-3">โปรแกรม</th>
+                                    <th class="p-3">วันที่เดินทาง</th>
+                                    <th class="p-3">จำนวนคน</th>
+                                    <th class="p-3">ยอดรวม</th>
+                                    <th class="p-3">สถานะ</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-stone-100">
+                                <tr>
+                                    <td class="p-3 font-mono">BK-2026-081</td>
+                                    <td class="p-3 font-medium text-slate-800">คณะอาจารย์ มรภ.พระนครศรีอยุธยา</td>
+                                    <td class="p-3">โฮมสเตย์เรือนไม้ & กิจกรรมวัฒนธรรม</td>
+                                    <td class="p-3">18 พ.ย. 2026</td>
+                                    <td class="p-3">15 ท่าน</td>
+                                    <td class="p-3 font-bold text-terracotta">฿18,000</td>
+                                    <td class="p-3"><span class="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-0.5 rounded">ยืนยันแล้ว</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-mono">BK-2026-082</td>
+                                    <td class="p-3 font-medium text-slate-800">คุณศิรินทร์ และครอบครัว</td>
+                                    <td class="p-3">วันเดย์ทริป: รถไฟลอยน้ำ & 8 ฐานเรียนรู้</td>
+                                    <td class="p-3">22 พ.ย. 2026</td>
+                                    <td class="p-3">4 ท่าน</td>
+                                    <td class="p-3 font-bold text-terracotta">฿2,360</td>
+                                    <td class="p-3"><span class="bg-amber-100 text-amber-800 text-[10px] font-bold px-2 py-0.5 rounded">รอมัดจำ</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- TAB 4: Shop Orders -->
+                <div id="tabContent-orders" class="space-y-4 hidden">
+                    <div class="overflow-x-auto border border-stone-200 rounded-xl">
+                        <table class="w-full text-left text-xs text-slate-600">
+                            <thead class="bg-stone-100 text-slate-700 font-semibold border-b border-stone-200">
+                                <tr>
+                                    <th class="p-3">รหัสสั่งซื้อ</th>
+                                    <th class="p-3">ผู้สั่งซื้อ</th>
+                                    <th class="p-3">รายการสินค้า</th>
+                                    <th class="p-3">ยอดชำระ</th>
+                                    <th class="p-3">การจัดส่ง</th>
+                                    <th class="p-3">สถานะ</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-stone-100">
+                                <tr>
+                                    <td class="p-3 font-mono">ORD-2026-114</td>
+                                    <td class="p-3 font-medium text-slate-800">คุณเกรียงไกร ชัยวัฒน์ (กทม.)</td>
+                                    <td class="p-3">ผ้าขาวม้าทอมือ (2 ผืน) + โมบายพวงมะโหตร (1 ชุด)</td>
+                                    <td class="p-3 font-bold text-terracotta">฿1,050</td>
+                                    <td class="p-3">Flash Express (TH847291)</td>
+                                    <td class="p-3"><span class="bg-blue-100 text-blue-800 text-[10px] font-bold px-2 py-0.5 rounded">จัดส่งแล้ว</span></td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-mono">ORD-2026-115</td>
+                                    <td class="p-3 font-medium text-slate-800">คุณวิภาวรรณ สดใส (ลพบุรี)</td>
+                                    <td class="p-3">พริกตะเกลืออบแห้ง (3 กระปุก) + ชุดขนมเบื้อง (1 กล่อง)</td>
+                                    <td class="p-3 font-bold text-terracotta">฿415</td>
+                                    <td class="p-3">Kerry Express</td>
+                                    <td class="p-3"><span class="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-0.5 rounded">เตรียมจัดส่ง</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Footer of Modal -->
+            <div class="mt-4 pt-3 border-t border-stone-200 flex justify-between items-center text-xs text-slate-500 shrink-0">
+                <div>
+                    <i class="fa-solid fa-server mr-1 text-ochreGold"></i> จำลองระบบบันทึกข้อมูลแบบ LocalStorage และ REST API
+                </div>
+                <button onclick="toggleAdminModal()" class="bg-slate-200 hover:bg-slate-300 text-slate-700 px-5 py-2 rounded-xl text-xs font-semibold">
+                    ปิดหน้าต่าง
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 bg-navanurakDark text-white px-5 py-3 rounded-2xl shadow-2xl flex items-center space-x-3 transition-all duration-300 transform translate-y-24 opacity-0 pointer-events-none">
+        <div class="w-8 h-8 rounded-full bg-ochreGold text-navanurakDark flex items-center justify-center font-bold text-sm">
+            <i class="fa-solid fa-check"></i>
+        </div>
+        <div>
+            <div id="toastTitle" class="text-xs font-bold font-heading">แจ้งเตือน</div>
+            <div id="toastMessage" class="text-[11px] text-slate-300">ข้อความระบบ</div>
+        </div>
+    </div>
+
+    <!-- ==================== JAVASCRIPT ==================== -->
+    <script>
+        // =========================================================================
+        // ⚙️ การตั้งค่า Google Sheets Web App URL สำหรับรับข้อมูลจริงบน GitHub Pages
+        // อาจารย์สามารถนำ URL ของ Web App ที่ได้จาก Google Apps Script มาวางแทนที่เครื่องหมายคำพูดด้านล่าง
+        // หรือจะกดปุ่ม "ตั้งค่า Google Sheets Webhook" ในหน้าแดชบอร์ดหลังบ้านก็ได้ค่ะ
+        // =========================================================================
+        let GOOGLE_SHEETS_URL = localStorage.getItem('google_sheet_webapp_url') || "";
+
+        let cart = [];
+        let currentBookingPrice = 0;
+
+        // Sample initial contacts pre-seeded into localStorage if empty
+        const initialContacts = [
+            {
+                id: 1,
+                date: "2026-11-12 14:35",
+                name: "ดร.นพพร เกษมสุข (มหาวิทยาลัยราชภัฏ)",
+                phone: "081-234-5678",
+                online: "nopporn@tru.ac.th",
+                purpose: "นำนักศึกษา / คณะศึกษาดูงานเยี่ยมชมชุมชน",
+                message: "สนใจนำนักศึกษา 45 คน เข้าเรียนรู้งานตัดพวงมะโหตรและเยี่ยมชมพิพิธภัณฑ์เรือนฝาค้อช่วงปลายเดือนนี้ครับ",
+                status: "ติดต่อแล้ว"
+            },
+            {
+                id: 2,
+                date: "2026-11-13 10:15",
+                name: "คุณพรทิพย์ สุวรรณเวช",
+                phone: "089-876-5432",
+                online: "line: porntip_sw",
+                purpose: "จองที่พักโฮมสเตย์และโปรแกรมท่องเที่ยว",
+                message: "เดินทางกัน 6 คน สนใจโฮมสเตย์ 2 วัน 1 คืน ขอคำแนะนำเรื่องอาหารพื้นบ้านด้วยค่ะ",
+                status: "รอดำเนินการ"
+            }
+        ];
+
+        // Initialize Contacts in LocalStorage
+        function getSavedContacts() {
+            const data = localStorage.getItem('thaibueng_contacts');
+            if (!data) {
+                localStorage.setItem('thaibueng_contacts', JSON.stringify(initialContacts));
+                return initialContacts;
+            }
+            return JSON.parse(data);
+        }
+
+        function saveContacts(contacts) {
+            localStorage.setItem('thaibueng_contacts', JSON.stringify(contacts));
+            renderContactInbox();
+        }
+
+        // Toggle Admin Modal & Tab Switching
+        function toggleAdminModal(targetTab = null) {
+            const modal = document.getElementById('adminModal');
+            modal.classList.toggle('hidden');
+            if (!modal.classList.contains('hidden')) {
+                renderContactInbox();
+                if (targetTab) {
+                    switchAdminTab(targetTab);
+                }
+            }
+        }
+
+        function switchAdminTab(tabName) {
+            // Update Tab Buttons
+            document.querySelectorAll('.admin-tab-btn').forEach(btn => {
+                btn.classList.remove('text-terracotta', 'border-b-2', 'border-terracotta');
+                btn.classList.add('text-slate-500');
+            });
+            const activeBtn = document.getElementById('tabBtn-' + tabName);
+            if (activeBtn) {
+                activeBtn.classList.add('text-terracotta', 'border-b-2', 'border-terracotta');
+                activeBtn.classList.remove('text-slate-500');
+            }
+
+            // Update Tab Contents
+            const tabs = ['inbox', 'metrics', 'bookings', 'orders'];
+            tabs.forEach(t => {
+                const el = document.getElementById('tabContent-' + t);
+                if (el) {
+                    if (t === tabName) {
+                        el.classList.remove('hidden');
+                    } else {
+                        el.classList.add('hidden');
+                    }
+                }
+            });
+        }
+
+        // Render Contacts Inbox Table
+        function renderContactInbox() {
+            const contacts = getSavedContacts();
+            const tbody = document.getElementById('inboxTableBody');
+            const badge = document.getElementById('inboxCountBadge');
+            
+            badge.innerText = contacts.length;
+
+            if (contacts.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="7" class="p-8 text-center text-slate-400">
+                            <i class="fa-regular fa-folder-open text-3xl mb-2 text-slate-300"></i>
+                            <p>ยังไม่มีข้อความติดต่อเข้ามา</p>
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+
+            let html = '';
+            contacts.forEach((c, index) => {
+                const statusBadge = c.status === 'ติดต่อแล้ว' 
+                    ? `<span class="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-0.5 rounded cursor-pointer" onclick="toggleStatus(${c.id})">${c.status}</span>`
+                    : `<span class="bg-amber-100 text-amber-800 text-[10px] font-bold px-2 py-0.5 rounded cursor-pointer animate-pulse" onclick="toggleStatus(${c.id})">${c.status}</span>`;
+
+                html += `
+                    <tr class="hover:bg-warmLinen/60 transition">
+                        <td class="p-3 text-slate-400 font-mono text-[11px] whitespace-nowrap">${c.date}</td>
+                        <td class="p-3 font-semibold text-slate-800">${c.name}</td>
+                        <td class="p-3 whitespace-nowrap">
+                            <div class="text-terracotta font-medium"><i class="fa-solid fa-phone text-[10px] mr-1"></i>${c.phone}</div>
+                            ${c.online ? `<div class="text-slate-400 text-[11px] mt-0.5">${c.online}</div>` : ''}
+                        </td>
+                        <td class="p-3 font-medium text-slate-700">${c.purpose}</td>
+                        <td class="p-3 max-w-xs text-slate-600 line-clamp-2" title="${c.message}">${c.message || '-'}</td>
+                        <td class="p-3 whitespace-nowrap">${statusBadge}</td>
+                        <td class="p-3 text-center whitespace-nowrap">
+                            <button onclick="deleteContact(${c.id})" class="text-slate-400 hover:text-red-500 p-1.5 transition" title="ลบรายการนี้">
+                                <i class="fa-regular fa-trash-can"></i>
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            });
+            tbody.innerHTML = html;
+        }
+
+        // Toggle Status between 'รอดำเนินการ' and 'ติดต่อแล้ว'
+        function toggleStatus(id) {
+            let contacts = getSavedContacts();
+            contacts = contacts.map(c => {
+                if (c.id === id) {
+                    c.status = c.status === 'ติดต่อแล้ว' ? 'รอดำเนินการ' : 'ติดต่อแล้ว';
+                }
+                return c;
+            });
+            saveContacts(contacts);
+        }
+
+        // Delete Contact
+        function deleteContact(id) {
+            if (confirm('คุณต้องการลบข้อความนี้ใช่หรือไม่?')) {
+                let contacts = getSavedContacts();
+                contacts = contacts.filter(c => c.id !== id);
+                saveContacts(contacts);
+                showToast('ลบข้อความแล้ว', 'ลบข้อมูลออกจากกล่องข้อความเรียบร้อย');
+            }
+        }
+
+        // Clear All Contacts
+        function clearAllContacts() {
+            if (confirm('ต้องการล้างข้อมูลข้อความทั้งหมดใช่หรือไม่?')) {
+                localStorage.removeItem('thaibueng_contacts');
+                renderContactInbox();
+                showToast('ล้างข้อมูลแล้ว', 'รีเซ็ตข้อมูลกล่องข้อความเป็นค่าว่าง');
+            }
+        }
+
+        // Export to Excel / CSV
+        function exportContactsCSV() {
+            const contacts = getSavedContacts();
+            if (contacts.length === 0) {
+                alert('ไม่มีข้อมูลสำหรับส่งออก');
+                return;
+            }
+
+            let csvContent = "\uFEFFวันเวลา,ชื่อผู้ติดต่อ,เบอร์โทร,LINE/อีเมล,วัตถุประสงค์,ข้อความ,สถานะ\n";
+            contacts.forEach(c => {
+                const row = [
+                    `"${c.date}"`,
+                    `"${c.name}"`,
+                    `"${c.phone}"`,
+                    `"${c.online || ''}"`,
+                    `"${c.purpose}"`,
+                    `"${(c.message || '').replace(/"/g, '""')}"`,
+                    `"${c.status}"`
+                ];
+                csvContent += row.join(",") + "\n";
+            });
+
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement("a");
+            link.setAttribute("href", url);
+            link.setAttribute("download", `รายงานผู้ติดต่อ_ไทยเบิ้งโคกสลุง_${new Date().toISOString().split('T')[0]}.csv`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            showToast('ดาวน์โหลดแล้ว', 'ส่งออกข้อมูลเป็นไฟล์ Excel (CSV) สำเร็จ');
+        }
+
+        // Configure Google Sheets Web App URL via prompt
+        function setGoogleSheetURL() {
+            const current = localStorage.getItem('google_sheet_webapp_url') || GOOGLE_SHEETS_URL || '';
+            const newUrl = prompt('วางลิงก์ Web App URL ที่ได้จาก Google Apps Script (ขึ้นต้นด้วย https://script.google.com/...):', current);
+            if (newUrl !== null) {
+                const trimmed = newUrl.trim();
+                localStorage.setItem('google_sheet_webapp_url', trimmed);
+                GOOGLE_SHEETS_URL = trimmed;
+                updateSheetStatusBadge();
+                if (trimmed) {
+                    showToast('เชื่อมต่อสำเร็จ', 'บันทึก Google Sheets Webhook เรียบร้อยแล้วค่ะ');
+                } else {
+                    showToast('ยกเลิกการเชื่อมต่อ', 'ใช้ระบบบันทึกจำลองแบบ LocalStorage');
+                }
+            }
+        }
+
+        function updateSheetStatusBadge() {
+            const badge = document.getElementById('sheetStatusBadge');
+            if (badge) {
+                if (GOOGLE_SHEETS_URL) {
+                    badge.className = "bg-emerald-600 text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full flex items-center gap-1 shadow-sm";
+                    badge.innerHTML = `<i class="fa-solid fa-cloud-arrow-up"></i> เชื่อมต่อ Google Sheets แล้ว`;
+                } else {
+                    badge.className = "bg-amber-100 text-amber-800 text-[10px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1";
+                    badge.innerHTML = `<i class="fa-solid fa-table"></i> ยังไม่ได้เชื่อม Google Sheets (คลิกเพื่อตั้งค่า)`;
+                    badge.style.cursor = 'pointer';
+                    badge.onclick = setGoogleSheetURL;
+                }
+            }
+        }
+
+        // Handle Contact Form Submission from Main Page
+        function handleContactSubmit(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('contactName').value.trim();
+            const phone = document.getElementById('contactPhone').value.trim();
+            const online = document.getElementById('contactOnline').value.trim();
+            const purpose = document.getElementById('contactPurpose').value;
+            const message = document.getElementById('contactMessage').value.trim();
+
+            const now = new Date();
+            const dateStr = now.getFullYear() + '-' + 
+                            String(now.getMonth() + 1).padStart(2, '0') + '-' + 
+                            String(now.getDate()).padStart(2, '0') + ' ' + 
+                            String(now.getHours()).padStart(2, '0') + ':' + 
+                            String(now.getMinutes()).padStart(2, '0');
+
+            const newContact = {
+                id: Date.now(),
+                date: dateStr,
+                name: name,
+                phone: phone,
+                online: online,
+                purpose: purpose,
+                message: message,
+                status: 'รอดำเนินการ'
+            };
+
+            // 1. Save locally to browser
+            const contacts = getSavedContacts();
+            contacts.unshift(newContact); // Add to the top
+            saveContacts(contacts);
+
+            // 2. Send to Google Sheets if Web App URL is configured
+            if (GOOGLE_SHEETS_URL) {
+                const formData = new FormData();
+                formData.append('date', dateStr);
+                formData.append('name', name);
+                formData.append('phone', phone);
+                formData.append('online', online);
+                formData.append('purpose', purpose);
+                formData.append('message', message);
+                formData.append('status', 'รอดำเนินการ');
+
+                fetch(GOOGLE_SHEETS_URL, {
+                    method: 'POST',
+                    body: formData,
+                    mode: 'no-cors' // Crucial for Google Apps Script redirect without CORS block
+                }).then(() => {
+                    console.log('✅ ส่งข้อมูลไปยัง Google Sheets สำเร็จ');
+                }).catch(err => {
+                    console.error('❌ ส่งข้อมูลไปยัง Google Sheets ไม่สำเร็จ:', err);
+                });
+            }
+
+            // Reset Form
+            document.getElementById('contactForm').reset();
+
+            // Prompt user with option to open Admin Inbox
+            const sheetNotice = GOOGLE_SHEETS_URL ? '\n(ข้อมูลถูกส่งเข้าตาราง Google Sheets เรียบร้อยแล้วค่ะ)' : '';
+            showToast('ส่งข้อความสำเร็จ!', 'ข้อมูลถูกส่งเข้ากล่องรับข้อความหลังบ้านเรียบร้อยแล้วค่ะ');
+            
+            setTimeout(() => {
+                if (confirm(`🎉 ส่งข้อความติดต่อเรียบร้อยแล้ว!${sheetNotice}\n\nต้องการเปิดดูข้อมูลที่ส่งเข้ามาใน "กล่องข้อความหลังบ้าน (Admin)" ทันทีเลยหรือไม่คะ?`)) {
+                    toggleAdminModal('inbox');
+                }
+            }, 400);
+        }
+
+        // Mobile Menu
+        function toggleMobileMenu() {
+            document.getElementById('mobileMenu').classList.toggle('hidden');
+        }
+
+        // Cart Drawer
+        function toggleCartDrawer() {
+            document.getElementById('cartDrawer').classList.toggle('hidden');
+        }
+
+        function addToCart(id, name, price, img) {
+            const existing = cart.find(item => item.id === id);
+            if (existing) {
+                existing.qty += 1;
+            } else {
+                cart.push({ id, name, price, img, qty: 1 });
+            }
+            updateCartUI();
+            showToast('เพิ่มลงตะกร้าแล้ว', name);
+        }
+
+        function removeFromCart(id) {
+            cart = cart.filter(item => item.id !== id);
+            updateCartUI();
+        }
+
+        function changeQty(id, delta) {
+            const item = cart.find(i => i.id === id);
+            if (item) {
+                item.qty += delta;
+                if (item.qty <= 0) {
+                    removeFromCart(id);
+                    return;
+                }
+            }
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const countBadge = document.getElementById('cartCountBadge');
+            const container = document.getElementById('cartItemsContainer');
+            const subtotalEl = document.getElementById('cartSubtotal');
+            const shippingEl = document.getElementById('shippingFee');
+            const totalEl = document.getElementById('cartTotal');
+            const btnCheckout = document.getElementById('btnCheckout');
+
+            const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+            countBadge.innerText = totalItems;
+
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div id="emptyCartMsg" class="text-center py-12 text-slate-400">
+                        <i class="fa-solid fa-basket-shopping text-5xl mb-3 text-slate-300"></i>
+                        <p class="text-sm font-medium">ยังไม่มีสินค้าในตะกร้าของคุณ</p>
+                        <p class="text-xs text-slate-400 mt-1">เลือกสินค้า OTOP เพื่อร่วมสนับสนุนชุมชนได้เลยค่ะ</p>
+                    </div>
+                `;
+                subtotalEl.innerText = '฿0';
+                shippingEl.innerText = '฿0';
+                totalEl.innerText = '฿0';
+                btnCheckout.disabled = true;
+                return;
+            }
+
+            btnCheckout.disabled = false;
+            let subtotal = 0;
+            let itemsHtml = '';
+
+            cart.forEach(item => {
+                const itemTotal = item.price * item.qty;
+                subtotal += itemTotal;
+                itemsHtml += `
+                    <div class="flex items-center gap-3 p-3 bg-warmLinen rounded-xl border border-stone-200">
+                        <img src="${item.img}" class="w-16 h-16 object-cover rounded-lg shrink-0">
+                        <div class="flex-1 min-w-0">
+                            <h5 class="text-xs font-bold text-slate-800 truncate">${item.name}</h5>
+                            <div class="text-xs text-terracotta font-semibold mt-0.5">฿${item.price.toLocaleString()}</div>
+                            <div class="flex items-center gap-2 mt-2">
+                                <button onclick="changeQty(${item.id}, -1)" class="w-6 h-6 rounded bg-stone-200 text-xs font-bold hover:bg-stone-300">-</button>
+                                <span class="text-xs font-bold">${item.qty}</span>
+                                <button onclick="changeQty(${item.id}, 1)" class="w-6 h-6 rounded bg-stone-200 text-xs font-bold hover:bg-stone-300">+</button>
+                            </div>
+                        </div>
+                        <button onclick="removeFromCart(${item.id})" class="text-slate-400 hover:text-red-500 p-2">
+                            <i class="fa-regular fa-trash-can text-sm"></i>
+                        </button>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = itemsHtml;
+            const shipping = subtotal > 500 ? 0 : 50;
+            const finalTotal = subtotal + shipping;
+
+            subtotalEl.innerText = '฿' + subtotal.toLocaleString();
+            shippingEl.innerText = shipping === 0 ? 'ส่งฟรี (ซื้อครบ ฿500)' : '฿50';
+            totalEl.innerText = '฿' + finalTotal.toLocaleString();
+        }
+
+        function proceedToCheckout() {
+            toggleCartDrawer();
+            alert('🎉 ขอบคุณที่อุดหนุนชุมชนไทยเบิ้งโคกสลุง!\n\nในระบบจริง ระบบจะส่งใบสั่งซื้อและแสดงพร้อมเพย์ QR Code ของกลุ่มวิสาหกิจชุมชนไทยเบิ้งโคกสลุง');
+        }
+
+        function openBaseModal(title, desc, img, price) {
+            document.getElementById('modalBaseTitle').innerText = title;
+            document.getElementById('modalBaseDesc').innerText = desc;
+            document.getElementById('modalBaseImg').src = img;
+            document.getElementById('modalBasePrice').innerText = price > 0 ? 'ค่าเวิร์กช็อป/ของฝาก: ฿' + price : 'เข้าชมฟรี';
+            document.getElementById('baseModal').classList.remove('hidden');
+        }
+
+        function closeBaseModal() {
+            document.getElementById('baseModal').classList.add('hidden');
+        }
+
+        function openBookingModal(packageTitle, pricePerPerson) {
+            currentBookingPrice = pricePerPerson;
+            document.getElementById('bookingPackageTitle').innerText = packageTitle;
+            document.getElementById('bookingPricePerPerson').innerText = '฿' + pricePerPerson.toLocaleString();
+            
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            document.getElementById('bookingDateInput').value = tomorrow.toISOString().split('T')[0];
+
+            calculateBookingTotal();
+            document.getElementById('bookingModal').classList.remove('hidden');
+        }
+
+        function closeBookingModal() {
+            document.getElementById('bookingModal').classList.add('hidden');
+        }
+
+        function calculateBookingTotal() {
+            const count = parseInt(document.getElementById('bookingPersonCount').value) || 1;
+            const total = currentBookingPrice * count;
+            document.getElementById('bookingTotalEstimated').innerText = '฿' + total.toLocaleString();
+        }
+
+        function submitBooking(e) {
+            e.preventDefault();
+            closeBookingModal();
+            showToast('บันทึกการจองสำเร็จ', 'ผู้แทนชุมชน (คุณประทีป 084-978-6782) จะติดต่อกลับเพื่อยืนยัน');
+        }
+
+        function speakPhrase(phrase, meaning) {
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(phrase);
+                utterance.lang = 'th-TH';
+                utterance.rate = 0.9;
+                window.speechSynthesis.speak(utterance);
+            }
+            showToast(phrase, meaning);
+        }
+
+        function changeLang(lang) {
+            const map = { th: 'ภาษาไทย', en: 'English', ch: '中文' };
+            showToast('เปลี่ยนภาษา', 'จำลองการสลับหน้าเป็น ' + map[lang] + ' (ตามแพลตฟอร์มนวนุรักษ์)');
+        }
+
+        function showToast(title, message) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastTitle').innerText = title;
+            document.getElementById('toastMessage').innerText = message;
+            
+            toast.classList.remove('translate-y-24', 'opacity-0', 'pointer-events-none');
+            setTimeout(() => {
+                toast.classList.add('translate-y-24', 'opacity-0', 'pointer-events-none');
+            }, 3500);
+        }
+
+        // Preload inbox on page ready
+        document.addEventListener('DOMContentLoaded', () => {
+            getSavedContacts();
+            updateSheetStatusBadge();
+        });
+    </script>
+</body>
+</html>
